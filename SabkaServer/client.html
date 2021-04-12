@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+
+    <style>
+        form {
+            width: 30%;
+            margin: 0px auto;
+            /* margin-top: 100px; */
+            border: 1px solid grey;
+            border-radius: 10px;
+            padding: 10px;
+        }
+    </style>
+    <script>
+        $(document).ready(function () {
+            $('#addReportBtn').click(function () {
+                // fetch('http://localhost:4000/reports', {
+                //     method: 'POST',
+                //     headers: {
+                //         'Content-Type': 'application/json'
+                //     },
+                //     body: JSON.stringify({
+                //         report: {
+                //             name: $('#floatingName').val(), // document.QuerySelector()
+                //             type: $('#floatingType').val()
+                //         }
+                //     })
+                // }).then(
+                //     (response) => response.json()
+                // ).then(response => console.log(response))
+
+                fetch('http://localhost:4000/administrator', {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                }).then(
+                    (response) => response.json()
+                ).then(response => console.log(response))
+            })
+        });
+    </script>
+</head>
+
+<body class="container">
+    <form action="">
+
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="floatingName" placeholder="Name">
+            <label for="floatingInput">Name</label>
+        </div>
+        <div class="form-floating">
+            <input type="password" class="form-control" id="floatingType" placeholder="Type">
+            <label for="floatingType">Type</label>
+        </div>
+        <input type="button" id="addReportBtn" value="Add" class="mt-2 btn btn-primary">
+    </form>
+</body>
+
+</html>
