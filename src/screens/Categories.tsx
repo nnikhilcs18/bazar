@@ -1,8 +1,10 @@
 import React, { useState,useEffect } from 'react';
 import {Image, View, Text, StyleSheet, SafeAreaView, ActivityIndicator, TouchableOpacity} from 'react-native';
 import { List } from 'react-native-paper';
-import { ScrollView} from 'react-native';
+import { ScrollView } from 'react-native';
+import Header from '../screens/Home/header';
 import Icon from 'react-native-vector-icons/FontAwesome5';
+
 // import { createStackNavigator, createAppContainer } from 'react-navigation';
 // import { NavigationContainer } from 'react-navigation-native';
 import { createStackNavigator } from 'react-navigation-stack';
@@ -47,10 +49,11 @@ export const Categories =({ navigation })=> {
     // }
     return (
         <View>
-          <Image 
+            <Header/>
+          {/* <Image 
               style={styles.logo}
               source={require("../images/logo.png")}
-           />  
+           />   */}
             <View>
                 <List.Section title="Categories">
                     <ScrollView>

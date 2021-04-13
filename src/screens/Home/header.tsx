@@ -3,7 +3,7 @@
 
 // export default AppHeader;
 import React from 'react'
-import { StyleSheet, Text, View, Image } from 'react-native'
+import { StyleSheet, Text, View, Image, Pressable } from 'react-native'
 // import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
@@ -11,19 +11,24 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 const bars = <Icon name={'menu'} color={'black'} size={30} />;
 const cart = <Icon name={'shopping-cart'} color={'red'} size={30} />;
 
-const appHeader = () => {
+const appHeader = ({}) => {
     return (
         <View style={styles.container}>
             <View style={styles.leftContainer}>
                 {bars}
+               
                 <Image
                     source={require("./logos.png")}
-                    style={{ width: 110, height: 40, marginLeft: 10 }}
-                />
+                        style={{ width: 110, height: 40, marginLeft: 10 }}
+                        
+                       />
+                
             </View>
             <View style={styles.rightContainer}>
                 {cart}
-                <Text>0 item</Text>
+                {/* <Pressable onPress={() => navigation.navigate('Cart')}> */}
+                    <Text>0 item</Text>
+                {/* </Pressable> */}
             </View>
         </View>
     )
