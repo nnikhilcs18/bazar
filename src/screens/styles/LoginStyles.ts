@@ -40,6 +40,11 @@ const styles = StyleSheet.create({
     errorMsg:{
         marginLeft:"3%",
         color:"red",
-    }
+    }, signInText: {
+      fontWeight: 'bold',
+      color: 'blue',
+      textDecorationLine: 'underline',
+      alignSelf: 'flex-end',
+    },
   });
   export default styles;

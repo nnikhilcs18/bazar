@@ -9,6 +9,7 @@ import {
   Alert,
   Text,
   StyleSheet,
+  TextInput,
 } from 'react-native';
 import {Input, Button} from 'react-native-elements';
 import Icon from 'react-native-vector-icons/MaterialIcons';
@@ -153,11 +154,14 @@ const Login = ({navigation}) => {
           />
         </View>
 
-        <Button
-          buttonStyle={styles.register}
-          title="Create New Account"
-          onPress={() => navigation.navigate('Register')}
-        />
+        <Text>
+            Dont have an Account?
+            <TextInput
+              style={styles.signInText}
+              onPressIn={()=>navigation.navigate('Register')}>
+              Create Account
+            </TextInput>
+          </Text>
       </View>
 
       {/* </TouchableWithoutFeedback>*/}

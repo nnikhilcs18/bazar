@@ -36,5 +36,10 @@ const styles = StyleSheet.create({
       textDecorationLine: 'underline',
       alignSelf: 'flex-end',
     },
+    errorMsg:{
+      marginLeft:"3%",
+      color:"red",
+  },
+  
   });
   export default styles;
