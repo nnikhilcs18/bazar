@@ -146,7 +146,7 @@ const Login = ({navigation}) => {
           <Button
             buttonStyle={styles.register}
             title="Login"
-            onPress={()=>navigation.navigate('Register')}
+            onPress={()=>navigation.navigate('Homescreen')}
           />
         </View>
 

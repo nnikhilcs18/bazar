@@ -9,6 +9,7 @@ import Login from './src/screens/Login';
 import Register from './src/screens/Register';
 import { Categories } from './src/screens/Categories';
 import Products from './src/screens/Products';
+import Homescreen from './src/screens/Home/Homescreen'
 
 
 
@@ -21,6 +22,7 @@ function AppNav() {
       <Stack.Navigator initialRouteName="Login">
         <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="Register" component={Register} />
+        <Stack.Screen name="Homescreen" component={Homescreen} />
         <Stack.Screen name="Categories" component={Categories} />
         <Stack.Screen name="Products" component={Products} />
         {/* <Stack.Screen name="FetchCatProd" component={FetchCatProd} />

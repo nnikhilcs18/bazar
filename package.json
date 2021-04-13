@@ -12,12 +12,13 @@
   "dependencies": {
     "@react-native-community/masked-view": "^0.1.10",
     "@react-native-masked-view/masked-view": "^0.2.3",
+    "@react-native-picker/picker": "^1.14.0",
     "@react-navigation/drawer": "^5.12.5",
     "@react-navigation/native": "^5.9.4",
     "@react-navigation/stack": "^5.14.4",
-    "react-native-elements": "^1.0.0-beta5",
     "react": "17.0.1",
     "react-native": "0.64.0",
+    "react-native-elements": "^1.0.0-beta5",
     "react-native-gesture-handler": "^1.10.3",
     "react-native-material-cards": "^1.0.15",
     "react-native-paper": "^4.7.2",
@@ -27,10 +28,9 @@
     "react-native-vector-icons": "^8.1.0",
     "react-navigation": "^4.4.4",
     "react-navigation-stack": "^2.10.4",
-    "redux-thunk": "^2.3.0",
-    "redux-persist": "^6.0.0",
     "react-redux": "^7.2.3",
-    "@react-native-picker/picker": "^1.14.0"
+    "redux-persist": "^6.0.0",
+    "redux-thunk": "^2.3.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",

@@ -79,7 +79,7 @@ const Register = ({navigation}) => {
             Already a Member?
             <TextInput
               style={styles.signInText}
-              onPressIn={()=>navigation.navigate('Categories')}>
+              onPressIn={()=>navigation.navigate('Login')}>
               SignIn
             </TextInput>
           </Text>
