@@ -10,7 +10,8 @@ import Register from './src/screens/Register';
 import { Categories } from './src/screens/Categories';
 import Products from './src/screens/Products';
 import Homescreen from './src/screens/Home/Homescreen';
-import Splash from'./src/screens/splash'
+// import Cart from './src/screens/cart';
+
 import { Header } from 'react-native/Libraries/NewAppScreen';
 
 
@@ -27,6 +28,7 @@ function AppNav() {
         <Stack.Screen name="Homescreen" component={Homescreen}/>
         <Stack.Screen name="Categories" component={Categories} />
         <Stack.Screen name="Products" component={Products} />
+        {/* <Stack.Screen name="Cart" component={Cart} /> */}
         {/* <Stack.Screen name="FetchCatProd" component={FetchCatProd} />
         <Stack.Screen name="FetchCategories" component={FetchCategories} /> */}
       </Stack.Navigator>

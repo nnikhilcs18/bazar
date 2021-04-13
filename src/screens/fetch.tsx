@@ -13,29 +13,82 @@ const Fetch =()=> {
     
 
 
-    const postProduct = (id,imageURL) => {
-      console.log("entering function")
-      console.log(`ID:${id}`,`image:${imageURL}`)
-      const productDetails={
-        ID:id,
-        image:imageURL
-      }
+  //   const postProduct = (id,imageURL) => {
+  //     console.log("entering function")
+  //     console.log(`ID:${id}`,`image:${imageURL}`)
+  //     const productDetails={
+  //       ID:id,
+  //       image:imageURL
+  //     }
 
-      fetch(urlCart, {
-          method: 'POST',
-          body:JSON.stringify(productDetails),
-          headers: {
-            "Content-type": "application/json",
-        },
-      })
-      .then((response) => response.text())
-      .then(() => 
-        {
-          console.log(`ID:${id}`,`image:${imageURL}`)
+  //     fetch(urlCart, {
+  //         method: 'POST',
+  //         body:JSON.stringify(productDetails),
+  //         headers: {
+  //           "Content-type": "application/json",
+  //       },
+  //     })
+  //     .then((response) => response.text())
+  //     .then(() => 
+  //       {
+  //         console.log(`ID:${id}`,`image:${imageURL}`)
           
-        })
-      .catch((error) =>{console.error(error);})
-      .catch(() =>{console.log('error');})
+  //       })
+  //     .catch((error) =>{console.error(error);})
+  //     .catch(() =>{console.log('error');})
+
+  // }
+  const postProduct = (id, imageURL, name, price) => {
+
+
+
+    const productDetails = {
+
+      ID: id,
+
+      image: imageURL,
+
+      ProductName: name,
+
+      Price: price
+
+    }
+
+
+
+    fetch(urlCart, {
+
+      method: 'POST',
+
+      body: JSON.stringify(productDetails),
+
+      headers: {
+
+        "Content-type": "application/json",
+
+      },
+
+    })
+
+      .then((response) => response.text())
+
+      .then(() => {
+
+        // console.log(`ID:${id}`,`image:${imageURL}`)
+
+        // const response =  response.json();
+
+
+
+
+
+      })
+
+      .catch((error) => { console.error(error); })
+
+      .catch(() => { console.log('error'); })
+
+
 
   }
 
@@ -66,7 +119,7 @@ const Fetch =()=> {
                         imageSource={{uri:imageURL}}
                         content={`${item.description}`}
                         btitle={`Buy Now @ Rs. ${item.price}`}
-                        bPress={()=>postProduct(item.id,imageURL)}/> 
+                        bPress={()=>postProduct(item.id,imageURL,item.name,item.price)}/> 
                     )
 
                 }}

@@ -17,24 +17,59 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cors()); // sets the header instead !
 
-// addToCart API
-// Method:GET , API -> /addToCart
 router.get("/addToCart", function (req, res) {
+
   res.json(addToCartArray); //converts js object to JSON
+
 });
 
+// Method:POST , API -> /addToCart
+
 router.post("/addToCart", function (req, res) {
+
   
+
   addToCartArray.push({
+
     ProductId: req.body.ID,
+
     ImageURL: req.body.image,
+
     ProductQuantity  :1,
+
+    ProductName:req.body.ProductName,
+
+    ProductPrice:req.body.Price,
+
   });
-  console.log(addToCartArray)
+
+  // console.log(addToCartArray)
+
   // res.json(addToCartObj); //converts js object to JSON
+
   // OR
+
   res.json({ success: "Record Inserted successfully" });
+
 });
+// addToCart API
+// Method:GET , API -> /addToCart
+// router.get("/addToCart", function (req, res) {
+//   res.json(addToCartArray); //converts js object to JSON
+// });
+
+// router.post("/addToCart", function (req, res) {
+  
+//   addToCartArray.push({
+//     ProductId: req.body.ID,
+//     ImageURL: req.body.image,
+//     ProductQuantity  :1,
+//   });
+//   console.log(addToCartArray)
+//   // res.json(addToCartObj); //converts js object to JSON
+//   // OR
+//   res.json({ success: "Record Inserted successfully" });
+// });
 
 
 
