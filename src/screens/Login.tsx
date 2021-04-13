@@ -28,7 +28,8 @@ const Login = ({navigation}) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  {/*const dispatch = useDispatch();
+  {
+    /*const dispatch = useDispatch();
 
   const {user, error} = useSelector(
     (state: ApplicationState) => state.userReducer,
@@ -40,7 +41,8 @@ const Login = ({navigation}) => {
   const onTapLogin = () => {
     dispatch(onLogin(email, password));
   };
-*/}
+*/
+  }
 
   const handleValidEmail = (val: string) => {
     if (val.length == 0) {
@@ -106,14 +108,14 @@ const Login = ({navigation}) => {
           <Input
             accessibilityLabel="Please Enter your Email"
             placeholder="Enter Your Email"
-            leftIcon={<Icon name="mail"  size={24} color="#bf2957" />}
+            leftIcon={<Icon name="mail" size={24} color="#bf2957" />}
             autoCapitalize="none"
             autoCorrect={false}
             keyboardType={'email-address'}
             onChangeText={setEmail}
             onEndEditing={e => handleValidEmail(e.nativeEvent.text)}
-            onFocus={()=>{
-              data.isValidUser=true;
+            onFocus={() => {
+              data.isValidUser = true;
             }}
           />
           {data.isValidUser ? null : (
@@ -126,7 +128,7 @@ const Login = ({navigation}) => {
             leftIcon={<Icon name="lock" size={24} color="#bf2957" />}
             rightIcon={
               <Icon
-                name={hidePass ? 'visibility' : 'visibilityoff'}
+                name={hidePass ? 'visibility-off' : 'visibility'}
                 size={25}
                 color="#bf2957"
                 onPress={() => setHidePass(!hidePass)}
@@ -136,13 +138,14 @@ const Login = ({navigation}) => {
             autoCorrect={false}
             onChangeText={setPassword}
             onEndEditing={e => handleValidPassword(e.nativeEvent.text)}
-            onFocus={()=>{
-              data.isValidPassword=true;
+            onFocus={() => {
+              data.isValidPassword = true;
             }}
           />
           {data.isValidPassword ? null : (
             <Text style={styles.errorMsg}>{data.passwordErrorMessage} </Text>
           )}
+
           <Button
             buttonStyle={styles.register}
             title="Login"
@@ -153,9 +156,10 @@ const Login = ({navigation}) => {
         <Button
           buttonStyle={styles.register}
           title="Create New Account"
-          onPress={()=>navigation.navigate('Register')}
+          onPress={() => navigation.navigate('Register')}
         />
       </View>
+
       {/* </TouchableWithoutFeedback>*/}
     </KeyboardAvoidingView>
   );
