@@ -1,5 +1,5 @@
 import { StyleSheet } from "react-native";
-// import {colors} from '../../constants/colors'
+import colors from '../../constants/colors'
 
 const styles = StyleSheet.create({
     container: {
@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
     },
     registerBtn: {
       marginTop: 10,
-      backgroundColor: "#bf2957",
+      backgroundColor: colors.primary,
       width: '90%',
       alignSelf: 'center',
       borderRadius: 100,
