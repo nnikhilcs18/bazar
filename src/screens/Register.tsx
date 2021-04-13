@@ -56,7 +56,7 @@ const Register = ({navigation}) => {
             secureTextEntry={hidePass ? true : false}
             rightIcon={
               <Icon
-                name={hidePass ? 'Visibility' : 'Visibility'}
+                name={hidePass ? 'visibility-off' : 'visibility'}
                 size={25}
                 color="#bf2957"
                 onPress={() => setHidePass(!hidePass)}
