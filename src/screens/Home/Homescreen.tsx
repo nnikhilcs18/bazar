@@ -3,11 +3,19 @@ import React, { useEffect, useState } from 'react';
 import { View, Text, StyleSheet, SafeAreaView, ActivityIndicator, FlatList, ScrollView } from 'react-native';
 import { Button, Image } from 'react-native-elements';
 import AppHeader from './header';
-import Slider from './carousel'
+import Slider from './carousel';
+import MyTabs from './bottomnavigation';
 
 import Icon from 'react-native-vector-icons/FontAwesome';
 import SafeAreaAndroid from './SafeAreaAndroid';
 import styles from './homestyle'
+// 
+
+import Products from '../Products';
+import { Categories } from '../Categories';
+
+
+// 
 
 
 
@@ -34,7 +42,7 @@ const Homescreen = ({ navigation }) => {
 
 
     return (
-        <SafeAreaView style={SafeAreaAndroid.AndroidSafeArea}>
+        // <SafeAreaView style={SafeAreaAndroid.AndroidSafeArea}>
             <ScrollView>
 
                 <View style={styles.container}>
@@ -71,7 +79,9 @@ const Homescreen = ({ navigation }) => {
 
                                                 />
                                             </View>
+                                            {/* <View><MyTabs/></View> */}
                                         </View>
+
                                     </>
                                 )
 
@@ -92,7 +102,7 @@ const Homescreen = ({ navigation }) => {
 
 
             </ScrollView>
-        </SafeAreaView>
+        // </SafeAreaView>
     );
 };
 
