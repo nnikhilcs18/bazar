@@ -1,6 +1,8 @@
 import React, { useState,useEffect } from 'react';
 import {Image, View, FlatList, Text, StyleSheet, SafeAreaView, ActivityIndicator, TouchableOpacity} from 'react-native';
 import ProductTemplate from './ProductTemplate'
+import { showMessage, hideMessage } from "react-native-flash-message";
+
 const urlProduct='http://10.0.2.2:4000/products'
 const urlCart='http://10.0.2.2:4000/addToCart'
 const FetchProducts =()=> {
@@ -29,21 +31,21 @@ const FetchProducts =()=> {
     })
       .then((response) => response.text())
       .then(() => {
-        // console.log(`ID:${id}`,`image:${imageURL}`)
+        showMessage({
+          message: "Product addedd successfully to the Cart",
+          type: "success",
+        });
+        
       })
       .catch((error) => { console.error(error); })
       .catch(() => { console.log('error'); })
+      
   }
 
     useEffect(() => {
 
-        fetch(urlProduct).then(response => response.json())
-    
-          .then(json => 
-            {
-              setData(json)
-              // console.log(data)
-            })
+        fetch(urlProduct).then(response => response.json())    
+          .then(json => {setData(json)})
           .catch((error) =>{console.error(error);})
     
     }, [])

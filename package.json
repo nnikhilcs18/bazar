@@ -20,6 +20,7 @@
     "react": "17.0.1",
     "react-native": "0.64.0",
     "react-native-elements": "^1.0.0-beta5",
+    "react-native-flash-message": "^0.1.23",
     "react-native-gesture-handler": "^1.10.3",
     "react-native-keychain": "^7.0.0",
     "react-native-material-cards": "^1.0.15",

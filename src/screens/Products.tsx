@@ -4,6 +4,7 @@ import Picker from '../components/picker';
 import Header from '../screens/Home/header';
 // import fonts from '../constants/fonts'
 import FetchProducts from './FetchProducts'
+import FlashMessage from "react-native-flash-message";
 export default function Products() {
   return (
     <View style={styles.main}>
@@ -12,6 +13,7 @@ export default function Products() {
       <Picker />
       <FetchProducts />
       </ScrollView>
+      <FlashMessage position="top" />
 
 
  
