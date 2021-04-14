@@ -14,11 +14,11 @@ import {
 import {Input, Button} from 'react-native-elements';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 // import colors from '../constants/colors';
-import styles from './styles/RegisterStyles';
+import styles from './LoginStyles';
 import {useDispatch, useSelector, Provider} from 'react-redux';
-import {ApplicationState, onLogin} from '../redux';
+import {ApplicationState, onLogin} from '../../redux';
 
-const Register = ({navigation}) => {
+const Login = ({navigation}) => {
   const [hidePass, setHidePass] = useState(true);
   const [data, setData] = React.useState({
     isValidUser: true,
@@ -30,7 +30,19 @@ const Register = ({navigation}) => {
   const [password, setPassword] = useState('');
 
   {
- 
+    /*const dispatch = useDispatch();
+
+  const {user, error} = useSelector(
+    (state: ApplicationState) => state.userReducer,
+  );
+
+  //fetch the token
+  const {token} = user;
+  //console.log(token);
+  const onTapLogin = () => {
+    dispatch(onLogin(email, password));
+  };
+*/
   }
 
   const handleValidEmail = (val: string) => {
@@ -90,38 +102,14 @@ const Register = ({navigation}) => {
     <KeyboardAvoidingView
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
       style={styles.container}>
-      <Image style={styles.logo} source={require('../images/logo.png')} />
+      <Image style={styles.logo} source={require('../../images/logo.png')} />
       {/* <TouchableWithoutFeedback onPress={Keyboard.dismiss}> */}
       <View style={styles.inner}>
         <View>
-        <Input
-            accessibilityLabel="Please Enter your First Name"
-            placeholder="Enter Your First Name"
-            autoCapitalize="none"
-            autoCorrect={false}
-            keyboardType={'email-address'}
-            onChangeText={setEmail}
-            onEndEditing={e => handleValidEmail(e.nativeEvent.text)}
-            onFocus={() => {
-              data.isValidUser = true;
-            }}
-          />
-          <Input
-            accessibilityLabel="Please Enter your last name"
-            placeholder="Enter Your Last Name"
-            autoCapitalize="none"
-            autoCorrect={false}
-            keyboardType={'email-address'}
-            onChangeText={setEmail}
-            onEndEditing={e => handleValidEmail(e.nativeEvent.text)}
-            onFocus={() => {
-              data.isValidUser = true;
-            }}
-          />
           <Input
             accessibilityLabel="Please Enter your Email"
             placeholder="Enter Your Email"
-            // leftIcon={<Icon name="mail" size={24} color="#bf2957" />}
+            leftIcon={<Icon name="mail" size={24} color="#bf2957" />}
             autoCapitalize="none"
             autoCorrect={false}
             keyboardType={'email-address'}
@@ -138,7 +126,7 @@ const Register = ({navigation}) => {
             accessibilityLabel="Please Enter your password"
             placeholder="Password"
             secureTextEntry={hidePass ? true : false}
-            // leftIcon={<Icon name="lock" size={24} color="#bf2957" />}
+            leftIcon={<Icon name="lock" size={24} color="#bf2957" />}
             rightIcon={
               <Icon
                 name={hidePass ? 'visibility-off' : 'visibility'}
@@ -158,36 +146,20 @@ const Register = ({navigation}) => {
           {data.isValidPassword ? null : (
             <Text style={styles.errorMsg}>{data.passwordErrorMessage} </Text>
           )}
-          <Input
-            accessibilityLabel="Please Re Enter your password"
-            placeholder="Confirm Password"
-            secureTextEntry={hidePass ? true : false}
-            // leftIcon={<Icon name="lock" size={24} color="#bf2957" />}
-            autoCapitalize="none"
-            autoCorrect={false}
-            onChangeText={setPassword}
-            onEndEditing={e => handleValidPassword(e.nativeEvent.text)}
-            onFocus={() => {
-              data.isValidPassword = true;
-            }}
-          />
-          {data.isValidPassword ? null : (
-            <Text style={styles.errorMsg}>{data.passwordErrorMessage} </Text>
-          )}
 
           <Button
-            buttonStyle={styles.registerBtn}
-            title="Create New Account"
-            onPress={() => navigation.navigate('Login')}
+            buttonStyle={styles.register}
+            title="Login"
+            onPress={()=>navigation.navigate('Homescreen')}
           />
         </View>
 
         <Text>
-            Already a Member?
+            Dont have an Account?
             <TextInput
               style={styles.signInText}
-              onPressIn={()=>navigation.navigate('Login')}>
-              SignIn
+              onPressIn={()=>navigation.navigate('Register')}>
+              Create Account
             </TextInput>
           </Text>
       </View>
@@ -197,15 +169,4 @@ const Register = ({navigation}) => {
   );
 };
 
-export default Register;
-
-
-
-
-
-
-
-
-
-
-
+export default Login;
