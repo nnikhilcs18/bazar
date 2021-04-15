@@ -84,14 +84,16 @@ const Login = ({navigation}) => {
     }
   };
 //saga implementation
-/*
+
   const dispatch = useDispatch();
   useEffect(
     () => {
       dispatch(getUser());
     }, [dispatch]);
-  */
-//const user=useSelector((state)=>state.user.user);
+  
+const user=useSelector((state)=>state.user.user);
+console.log("----------Login Page Console----------")
+console.log(user)
 //const user=useSelector((state)=>state.user.user)
 
 
@@ -99,7 +101,6 @@ const Login = ({navigation}) => {
 
   console.log('test');
   return (
-    <Provider store={store}>
     <KeyboardAvoidingView
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
       style={styles.container}>
@@ -167,7 +168,6 @@ const Login = ({navigation}) => {
 
       {/* </TouchableWithoutFeedback>*/}
     </KeyboardAvoidingView>
-    </Provider>
   );
 };
 

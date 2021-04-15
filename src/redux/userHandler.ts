@@ -1,5 +1,5 @@
 import {call,put} from "redux-saga/effects";
-import { requestGetUser } from "./userRequest";
+import { requestGetUser, requestGetUser2 } from "./userRequest";
 import { setUser } from "./user";
 
 export function* handleGetUser(action){

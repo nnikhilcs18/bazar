@@ -11,15 +11,21 @@ import Products from './src/screens/Products';
 import Homescreen from './src/screens/Home/Homescreen';
 import Tabs from './src/screens/Tabs';
 
+//implementing saga
+import store from "./src/redux/store"
+import { Provider } from 'react-redux';
+
 const Stack = createStackNavigator();
 // const Drawer = createDrawerNavigator();
 
 function AppNav() {
   console.disableYellowBox = true;
   return (
+    <Provider store={store}>
     <NavigationContainer>
       <Tabs />
     </NavigationContainer>
+    </Provider>
       
   );
 }
