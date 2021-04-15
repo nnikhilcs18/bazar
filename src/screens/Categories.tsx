@@ -49,7 +49,9 @@ export const Categories =({ navigation })=> {
     // }
     return (
         <View>
-            <Header/>
+            <TouchableOpacity onPress={() => navigation.navigate('Homescreen')}>
+                <Header />
+                </TouchableOpacity>
           {/* <Image 
               style={styles.logo}
               source={require("../images/logo.png")}

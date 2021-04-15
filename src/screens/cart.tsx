@@ -1,4 +1,5 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
+import Header from '../screens/Home/header';
 import ButtonCart from '../components/button'
 import {
   ItemsSubscript,
@@ -45,6 +46,7 @@ const Cart = () => {
   return (
     <Main>
       <TextView>
+        <Header/>
         <TopBar>
           My Cart ({data.length} <ItemsSubscript>items</ItemsSubscript> )
         </TopBar>

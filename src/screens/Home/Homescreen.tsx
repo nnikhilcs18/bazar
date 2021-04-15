@@ -1,12 +1,16 @@
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import React, { useEffect, useState } from 'react';
-import { View, Text, StyleSheet, SafeAreaView, ActivityIndicator, FlatList, ScrollView } from 'react-native';
+import { View, Text, StyleSheet, SafeAreaView, ActivityIndicator,TouchableOpacity, FlatList, ScrollView } from 'react-native';
 import { Button, Image } from 'react-native-elements';
 import AppHeader from './header';
 import Slider from './carousel';
+import EStyleSheet from 'react-native-extended-stylesheet';
+import Icon from 'react-native-vector-icons/MaterialIcons';
+
+
 import MyTabs from './bottomnavigation';
 
-import Icon from 'react-native-vector-icons/FontAwesome';
+// import Icon from 'react-native-vector-icons/FontAwesome';
 import SafeAreaAndroid from './SafeAreaAndroid';
 import styles from './homestyle'
 // 
@@ -20,7 +24,7 @@ import { Categories } from '../Categories';
 
 
 
-
+const cart = <Icon name={'shopping-cart'} color={'red'} size={30} />;
 
 const Homescreen = ({ navigation }) => {
     const [data, setData] = useState([])
@@ -43,16 +47,18 @@ const Homescreen = ({ navigation }) => {
 
     return (
         // <SafeAreaView style={SafeAreaAndroid.AndroidSafeArea}>
-            <ScrollView>
+        <ScrollView
+        >
 
                 <View style={styles.container}>
-                    <View style={styles.header} >
+                <View style={styles.header} >
+                    <TouchableOpacity onPress={() => navigation.navigate('Homescreen')}>
                         <AppHeader />
+                        
+                        </TouchableOpacity>
                     </View>
-
+                <View style={styles.categoriesList}><Slider /></View>
                     <View style={styles.categories} >
-                        <View style={styles.categoriesList}><Slider /></View>
-
                         <FlatList
                             data={data}
                             renderItem={({ item }) => {
@@ -73,7 +79,7 @@ const Homescreen = ({ navigation }) => {
                                                 <Text style={styles.para}>{item.description}</Text>
                                                 <Button
                                                     buttonStyle={styles.explore}
-                                                    title="explore"
+                                                    title={item.name}
                                                     onPress={() => navigation.navigate('Categories')}
 
 
