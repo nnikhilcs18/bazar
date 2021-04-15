@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet, Image,TouchableOpacity } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import Login from './Login';
+import Login from './Login/Login';
 import { Categories } from './Categories';
 import Products from './Products';
 import Homescreen from './Home/Homescreen';
