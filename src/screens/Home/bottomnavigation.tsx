@@ -1,48 +1,71 @@
-import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import Products from '../Products';
-import { Categories } from '../Categories';
-import Homescreen from './Homescreen';
 
-const Tab = createMaterialBottomTabNavigator();
 
- export function MyTabs() {
-    return (
-        <Tab.Navigator
-            initialRouteName="Login"
-            activeColor="#e91e63"
-            barStyle={{ backgroundColor: 'tomato' }}
-        >
-            <Tab.Screen
-                name="Home"
-                component={Homescreen}
-                options={{
-                    tabBarLabel: 'Home',
-                    tabBarIcon: ({ color }) => (
-                        <MaterialCommunityIcons name="home" color={color} size={26} />
-                    ),
-                }}
-            />
-            <Tab.Screen
-                name="Categories"
-                component={Categories}
-                options={{
-                    tabBarLabel: 'Categories',
-                    tabBarIcon: ({ color }) => (
-                        <MaterialCommunityIcons name="bell" color={color} size={26} />
-                    ),
-                }}
-            />
-            <Tab.Screen
-                name="Products"
-                component={Products}
-                options={{
-                    tabBarLabel: 'Products',
-                    tabBarIcon: ({ color }) => (
-                        <MaterialCommunityIcons name="account" color={color} size={26} />
-                    ),
-                }}
-            />
-        </Tab.Navigator>
-    );
-}
+
+// // export default AppHeader;
+// import React from 'react'
+// import { StyleSheet, Text, View, Image, Pressable ,Button} from 'react-native'
+// // import { Button } from 'react-native-paper';
+// // import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
+// import Icon from 'react-native-vector-icons/MaterialIcons';
+
+
+// const bars = <Icon name={'menu'} color={'black'} size={30} />;
+// const cart = <Icon name={'shopping-cart'} color={'red'} size={30} />;
+
+// const appHeader = ({ }) => {
+//     return (
+//         <View style={styles.container}>
+//             <View style={styles.leftContainer}>
+//                 {bars}
+
+
+//             </View>
+//             <View style={styles.rightContainer}>
+//                <Button>
+//                     {cart}
+//                </Button>
+                
+//             </View>
+//         </View>
+//     )
+// }
+
+// export default appHeader
+
+// const styles = StyleSheet.create({
+//     container: {
+//         // flex: 0.1,
+//         flexDirection: 'row',
+//         justifyContent: 'space-around',
+//         alignItems: 'center',
+//         backgroundColor: '#ddd',
+//         shadowColor: '#000',
+//         shadowOffset: {
+//             width: 0,
+//             height: 2,
+//         },
+//         shadowOpacity: 0.25,
+//         shadowRadius: 3.84,
+
+//         elevation: 5,
+//     },
+
+//     leftContainer: {
+//         flex: 3,
+//         flexDirection: 'row',
+//         alignItems: 'center',
+//         padding: 8,
+//         paddingLeft: 8,
+//         backgroundColor: 'white',
+//     },
+
+//     rightContainer: {
+//         flex: 1,
+//         flexDirection: 'row',
+//         justifyContent: 'space-around',
+//         alignItems: 'center',
+//         height: '100%',
+//         // padding: 20,
+//         backgroundColor: '#eeee',
+//     },
+// });

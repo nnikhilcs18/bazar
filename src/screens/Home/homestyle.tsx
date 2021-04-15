@@ -1,25 +1,32 @@
 
 import { StyleSheet } from "react-native";
+// import EStyleSheet from 'react-native-extended-stylesheet';
+
 const styles = StyleSheet.create({
     container: {
         flex: 1,
 
     },
-    categories: { flex: 8 },
+    categories: {
+        flex: 8,
+        
+    },
+    
     header: {
-        flex: 0.6,
+        flex: 1
+        // position:'absolute'
 
         // borderBottomWidth: 1,
         // borderBottomColor: 'grey',
-        shadowColor: '#000',
-        shadowOffset: {
-            width: 0,
-            height: 2,
-        },
-        shadowOpacity: 0.25,
-        shadowRadius: 3.84,
+        // shadowColor: '#000',
+        // shadowOffset: {
+        //     width: 0,
+        //     height: 2,
+        // },
+        // shadowOpacity: 0.25,
+        // shadowRadius: 3.84,
 
-        elevation: 5,
+        // elevation: 5,
 
 
     },
@@ -28,35 +35,40 @@ const styles = StyleSheet.create({
     },
     title: {
         fontWeight: 'bold',
-        fontSize: 15
+        fontSize: 15,
+        marginBottom:5
     },
     categoriesList: {
-        flex: 3,
+        flex: 2,
         borderBottomColor: 'grey',
         flexDirection: 'row',
-        // borderBottomWidth: 1,
-        shadowColor: '#000',
-        shadowOffset: {
-            width: 0,
-            height: 1,
-        },
-        shadowOpacity: 0.25,
-        shadowRadius: 3.84,
-
-        elevation: 5,
-
-
+        marginBottom: 20,
     },
+        
+        
+        // borderBottomWidth: 1,
+        // shadowColor: '#000',
+        // shadowOffset: {
+        //     width: 0,
+        //     height: 1,
+        // },
+        // shadowOpacity: 0.25,
+        // shadowRadius: 3.84,
+
+        // elevation: 5,
+
+
+  
     caterogiesimg: {
-        flex: 2,
+        flex: 2.5,
         flexDirection: 'row',
         margin: 20
 
     },
     explore: {
         backgroundColor: "#bf2957",
-        width: "60%",
-        marginTop: 0
+        width: "90%",
+        marginTop: 5
 
 
 
