@@ -3,8 +3,9 @@ import {  StyleSheet, Text, View,ScrollView ,TouchableOpacity} from 'react-nativ
 import Picker from '../components/picker';
 import Header from '../screens/Home/header';
 // import fonts from '../constants/fonts'
-import Fetch from './fetch'
-export default function Products({navigation}) {
+import FetchProducts from './FetchProducts'
+import FlashMessage from "react-native-flash-message";
+export default function Products() {
   return (
     <View style={styles.main}>
       <ScrollView >
@@ -12,8 +13,9 @@ export default function Products({navigation}) {
           <Header />
           </TouchableOpacity>
       <Picker />
-      <Fetch />
+      <FetchProducts />
       </ScrollView>
+      <FlashMessage position="top" />
 
 
  

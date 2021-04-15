@@ -19,8 +19,8 @@ const appHeader = ({}) => {
         
         <View style={styles.container}>
             <View style={styles.leftContainer}>
-                {bars}
-               
+                {/* {bars}
+                */}
                 <Image
                     source={require("./logos.png")}
                         style={{ width: 110, height: 40, marginLeft: 10 }}

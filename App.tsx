@@ -1,8 +1,16 @@
 import  React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+<<<<<<< HEAD
 import Login from './src/screens/Login';
 import Register from './src/screens/Register';
+=======
+import { createDrawerNavigator } from '@react-navigation/drawer';
+// import  {FetchCategories}  from './FetchCategories';
+// import  {FetchCatProd}  from './FetchCatProd';
+import Login from './src/screens/Login/Login';
+import Register from './src/screens/Register/Register';
+>>>>>>> 23ffb502a08c779d8fdf399ca012ed32ffc3a6a9
 import { Categories } from './src/screens/Categories';
 import Products from './src/screens/Products';
 import Homescreen from './src/screens/Home/Homescreen';

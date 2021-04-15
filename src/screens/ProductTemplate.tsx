@@ -2,7 +2,8 @@ import React,{useState} from 'react';
 import {Image, View, Text, StyleSheet} from 'react-native';
 import Buttons from '../components/button'
 // import colors from '../constants/colors'
-const plp =(props)=>{
+
+const productTemplate =(props)=>{
     
 
     
@@ -66,4 +67,4 @@ const styles= StyleSheet.create({
 
 })
 
-export default plp
+export default productTemplate
