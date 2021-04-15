@@ -1,7 +1,17 @@
-import {createStore,applyMiddleware} from 'redux'
-import thunk from 'redux-thunk'
-import {rootReducer} from './reducers'
+import {combineReducers,createStore,applyMiddleware} from 'redux';
+import userReducer from "./user";
+import createSagaMiddleWare from "redux-saga"
+import { watecherSage } from './rootSaga';
 
-const store=createStore(rootReducer,applyMiddleware(thunk))
+const reducer=combineReducers({
+user:userReducer
+});
 
-export {store};
+const sagaMiddleware=createSagaMiddleWare();
+const middleware=[sagaMiddleware];
+const store=createStore(reducer,{},applyMiddleware(...middleware));
+
+sagaMiddleware.run(watecherSage)
+
+
+export default store;

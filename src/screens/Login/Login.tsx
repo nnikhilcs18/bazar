@@ -17,6 +17,8 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import styles from './LoginStyles';
 import {useDispatch, useSelector, Provider} from 'react-redux';
 import {ApplicationState, onLogin} from '../../redux';
+import { getUser } from '../../redux/user';
+import store from '../../redux/store';
 
 const Login = ({navigation}) => {
   const [hidePass, setHidePass] = useState(true);
@@ -29,21 +31,6 @@ const Login = ({navigation}) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  {
-    /*const dispatch = useDispatch();
-
-  const {user, error} = useSelector(
-    (state: ApplicationState) => state.userReducer,
-  );
-
-  //fetch the token
-  const {token} = user;
-  //console.log(token);
-  const onTapLogin = () => {
-    dispatch(onLogin(email, password));
-  };
-*/
-  }
 
   const handleValidEmail = (val: string) => {
     if (val.length == 0) {
@@ -96,9 +83,23 @@ const Login = ({navigation}) => {
       });
     }
   };
+//saga implementation
+/*
+  const dispatch = useDispatch();
+  useEffect(
+    () => {
+      dispatch(getUser());
+    }, [dispatch]);
+  */
+//const user=useSelector((state)=>state.user.user);
+//const user=useSelector((state)=>state.user.user)
+
+
+
 
   console.log('test');
   return (
+    <Provider store={store}>
     <KeyboardAvoidingView
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
       style={styles.container}>
@@ -166,6 +167,7 @@ const Login = ({navigation}) => {
 
       {/* </TouchableWithoutFeedback>*/}
     </KeyboardAvoidingView>
+    </Provider>
   );
 };
 

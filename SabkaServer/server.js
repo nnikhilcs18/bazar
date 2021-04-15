@@ -5,6 +5,7 @@ var addToCartArray = addToCartModule.array;
 var bannersObj = require("./data/banners.json");
 var categoriesObj = require("./data/categories.json");
 var productsObj = require("./data/products.json");
+var usersObj=require("./data/users.json")
 
 const { response } = require("express");
 var app = express(); // one application
@@ -139,10 +140,48 @@ router.post("/categories", function (req, res) {
   res.json({ success: "Record Inserted successfully" });
 });
 
+router.get("/users", function (req, res) {
+  res.json(usersObj); //converts js object to JSON
+});
+
+// Method:POST , API -> /users
+router.post("/users", function (req, res) {
+  console.log(req.body.users); // data received from client side (within request object)
+  usersObj.push({
+    username: req.body.users.username,
+    password: req.body.users.password,
+  });
+  // res.json(productsObj); //converts js object to JSON
+  // OR
+  res.json({ success: "Record Inserted successfully" });
+});
+
+
+
+
+
+
+
+
+
+
+
 // Home Url (Optional and do not use)
 router.get("/", function (req, res) {
   res.sendFile("client.html", { root: __dirname });
 });
+
+
+
+
+
+
+
+
+
+
+
+
 
 app.use(router);
 app.listen(4000, () => console.log("Server running @ 4000 !"));
