@@ -17,7 +17,7 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import styles from './LoginStyles';
 import {useDispatch, useSelector, Provider} from 'react-redux';
 import {ApplicationState, onLogin} from '../../redux';
-import { getUser } from '../../redux/user';
+import { getUser } from '../../redux/reducer/user';
 import store from '../../redux/store';
 
 const Login = ({navigation}) => {
@@ -84,17 +84,18 @@ const Login = ({navigation}) => {
     }
   };
 //saga implementation
+const dispatch = useDispatch();
 
-  const dispatch = useDispatch();
-  useEffect(
-    () => {
-      dispatch(getUser());
-    }, [dispatch]);
-  
+
+
+
 const user=useSelector((state)=>state.user.user);
-console.log("----------Login Page Console----------")
-console.log(user)
-//const user=useSelector((state)=>state.user.user)
+console.log(typeof 'user')
+
+const checkValidUser= async() =>{
+  console.log("----------Login Page Console----------");
+      dispatch(getUser(email,password));
+}
 
 
 
@@ -152,7 +153,8 @@ console.log(user)
           <Button
             buttonStyle={styles.register}
             title="Login"
-            onPress={()=>navigation.navigate('Homescreen')}
+            onPress={checkValidUser }
+           //onPress={()=>navigation.navigate('Homescreen')}
           />
         </View>
 

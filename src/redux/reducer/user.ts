@@ -1,13 +1,19 @@
+//reducer in redducer folder 
+
 import { AnyIfEmpty } from "react-redux";
 
 export const GET_USER="GET_USER";
 const SET_USER="SET_USER";
 
-export const getUser=()=>({
-    type:GET_USER
+export const getUser=(email,password)=>({
+    type:GET_USER,
+    email:email,
+    password:password,
 });
 const initialState={
-    user:null
+    user:null,
+    email:null,
+    password:null,
 };
 export const setUser=(user)=>({
     type:SET_USER,
@@ -15,6 +21,8 @@ export const setUser=(user)=>({
 })
 
 export default (state=initialState,action)=>{
+    console.log("----------reducer------------");
+    console.log(action);
     switch(action.type)
     {
         case SET_USER:
