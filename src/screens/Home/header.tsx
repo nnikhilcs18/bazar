@@ -1,19 +1,18 @@
 
-
-
 // export default AppHeader;
 import React from 'react'
 import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native'
 // import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import Header from 'react-native-elements'
 import Icon from 'react-native-vector-icons/MaterialIcons';
-
-
+import { useSelector, useDispatch } from 'react-redux'
 
 const bars = <Icon name={'menu'} color={'black'} size={30} />;
 const cart = <Icon name={'shopping-cart'} color={'red'} size={30} />;
 
-const appHeader = ({}) => {
+const appHeader = () => {
+    const count=useSelector(state => state.productReducer.counter)
+  
     return (
         
         
@@ -32,7 +31,7 @@ const appHeader = ({}) => {
             <View style={styles.rightContainer}>
                 {cart}
               
-                    <Text>0 item</Text>
+                    <Text>{count} items</Text>
                
             </View>
         </View>

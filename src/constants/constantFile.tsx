@@ -3,7 +3,7 @@ const dimensions = Dimensions.get('window');
 const imageHeight = Math.round(dimensions.width * 0.25);
 const imageWidth = imageHeight;
 import styled from 'styled-components/native';
-export const Url = 'http://10.0.2.2:3000/categories';
+export const Url = 'http://10.0.2.2:4000/addToCart';
 
 export const ItemsSubscript = styled.Text`
 font-size:20px;

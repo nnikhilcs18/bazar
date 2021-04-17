@@ -1,7 +1,7 @@
 import React from 'react';
 import {  StyleSheet, Text, View,ScrollView ,TouchableOpacity} from 'react-native';
-import Picker from '../components/picker';
-import Header from '../screens/Home/header';
+import Picker from '../../components/picker';
+import Header from '../Home/header';
 // import fonts from '../constants/fonts'
 import FetchProducts from './FetchProducts'
 import FlashMessage from "react-native-flash-message";
