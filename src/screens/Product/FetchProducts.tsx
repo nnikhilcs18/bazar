@@ -59,19 +59,10 @@ const FetchProducts =()=> {
           .catch((error) =>{console.error(error);})
     
     }, [])
-<<<<<<< HEAD:src/screens/FetchProducts.tsx
-    
-
- 
-  return (
-    
-       <FlatList
-=======
         
     return (
          
             <FlatList
->>>>>>> 8b608c8251c888c5497de860e617b5127c8362ae:src/screens/Product/FetchProducts.tsx
                 data={data}
                 keyExtractor={item => `productItem${item.id.toString()}`}
                 renderItem={({item})=>{
