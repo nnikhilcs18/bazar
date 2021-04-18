@@ -1,4 +1,5 @@
-import  React from 'react';
+import  React,{useEffect,Component} from 'react';
+import SplashScreen from 'react-native-splash-screen'
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createDrawerNavigator } from '@react-navigation/drawer';
@@ -20,7 +21,9 @@ const Stack = createStackNavigator();
 
 function AppNav() {
   console.disableYellowBox = true;
+  setTimeout(function(){ SplashScreen.hide()}, 3000);
   return (
+    
     <Provider store={store}>
     <NavigationContainer>
       <Tabs />

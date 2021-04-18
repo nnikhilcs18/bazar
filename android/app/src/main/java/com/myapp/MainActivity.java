@@ -1,6 +1,12 @@
 package com.myapp;
 
+import android.os.Bundle;
+import android.os.PersistableBundle;
+
+import androidx.annotation.Nullable;
+
 import com.facebook.react.ReactActivity;
+import org.devio.rn.splashscreen.SplashScreen;
 
 public class MainActivity extends ReactActivity {
 
@@ -11,5 +17,11 @@ public class MainActivity extends ReactActivity {
   @Override
   protected String getMainComponentName() {
     return "MyApp";
+  }
+
+  @Override
+  public void onCreate(Bundle savedInstanceState) {
+    SplashScreen.show(this);
+    super.onCreate(savedInstanceState);
   }
 }
