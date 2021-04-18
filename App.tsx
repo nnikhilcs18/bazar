@@ -1,4 +1,5 @@
-import  React from 'react';
+import React from 'react';
+import {View} from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createDrawerNavigator } from '@react-navigation/drawer';
@@ -17,9 +18,12 @@ const Stack = createStackNavigator();
 function AppNav() {
   console.disableYellowBox = true;
   return (
+   
+
     <NavigationContainer>
       <Tabs />
-    </NavigationContainer>
+      </NavigationContainer>
+    
       
   );
 }

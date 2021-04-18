@@ -7,7 +7,9 @@ import Products from './Products';
 import Homescreen from './Home/Homescreen';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import Cart from './cart';
+import Register from './Register/Register'
 import HomeIcon from '@material-ui/icons/Home';
+import { createStackNavigator } from '@react-navigation/stack';
 
 const Tab = createBottomTabNavigator();
 const user = <Icon name={'person'} color={'white'} size={30} />;
@@ -15,23 +17,26 @@ const Home = <Icon name={'home'} color={'white'} size={30} />;
 const listitem = <Icon name={'list'} color={'white'} size={30} />;
 const item = <Icon name={'category'} color={'white'} size={30} />;
 const shopcart = <Icon name={'shopping-cart'} color={'white'} size={30} />;
+const Stack = createStackNavigator();
 const Tabs = () => {
     return (
+        
         <Tab.Navigator
             tabBarOptions={{
                 showLabel:false,
                 style: {
-                    backgroundColor:'#bf2957'
+                    backgroundColor: '#bf2957',
+                    
                }
            }}>
-           
+         
             <Tab.Screen name="Homescreen" component={Homescreen}
                 options={{
                     tabBarIcon: ({ focused }) => (
                         <View>
                             {Home}
                             
-                            {/* <Text >Home</Text> */}
+                            <Text style={{color:'white'}}>Home</Text>
                            
                         </View>
            
@@ -43,7 +48,7 @@ const Tabs = () => {
                         <View>
                             {item}
 
-                            {/* <Text >Home</Text> */}
+                            <Text style={{ color: 'white',paddingLeft:0 }}>Categories</Text>
 
                         </View>
 
@@ -55,7 +60,7 @@ const Tabs = () => {
                         <View>
                             {listitem}
 
-                            {/* <Text >Home</Text> */}
+                            <Text style={{ color: 'white' }}>Products</Text>
 
                         </View>
 
@@ -68,7 +73,7 @@ const Tabs = () => {
                         <View>
                             {user}
 
-                            {/* <Text >Home</Text> */}
+                            <Text style={{ color: 'white' }}>User</Text>
 
                         </View>
 
@@ -80,7 +85,7 @@ const Tabs = () => {
                         <View>
                             {shopcart}
 
-                            {/* <Text >Home</Text> */}
+                            <Text style={{ color: 'white' }}>Cart</Text>
 
                         </View>
 
@@ -91,4 +96,16 @@ const Tabs = () => {
         </Tab.Navigator>
     );
 }
-export default Tabs;
+function Appbar() {
+    return (
+        <Stack.Navigator screenOptions={{
+            headerShown: false
+        }}>
+            <Stack.Screen name="Login" component={Login} />
+            <Stack.Screen name="Register" component={Register} />
+            <Stack.Screen name="Homescreen" component={Tabs} />
+           
+        </Stack.Navigator>
+    );
+}
+export default Appbar;

@@ -1,17 +1,18 @@
 import React from 'react';
 import {  StyleSheet, Text, View,ScrollView ,TouchableOpacity} from 'react-native';
 import Picker from '../components/picker';
-import Header from '../screens/Home/header';
+import AppHeader from '../screens/Home/header';
 // import fonts from '../constants/fonts'
 import FetchProducts from './FetchProducts'
 import FlashMessage from "react-native-flash-message";
-export default function Products() {
+export default function Products(navigation) {
   return (
     <View style={styles.main}>
       <ScrollView >
         <TouchableOpacity onPress={() => navigation.navigate('Homescreen')}>
-          <Header />
-          </TouchableOpacity>
+          <AppHeader />
+
+        </TouchableOpacity>
       <Picker />
       <FetchProducts />
       </ScrollView>

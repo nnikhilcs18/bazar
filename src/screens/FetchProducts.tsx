@@ -2,6 +2,7 @@ import React, { useState,useEffect } from 'react';
 import {Image, View, FlatList, Text, StyleSheet, SafeAreaView, ActivityIndicator, TouchableOpacity} from 'react-native';
 import ProductTemplate from './ProductTemplate'
 import { showMessage, hideMessage } from "react-native-flash-message";
+import Header from './Home/header'
 
 const urlProduct='http://10.0.2.2:4000/products'
 const urlCart='http://10.0.2.2:4000/addToCart'
@@ -51,10 +52,10 @@ const FetchProducts =()=> {
     }, [])
     
 
+ 
+  return (
     
-    return (
-         
-            <FlatList
+       <FlatList
                 data={data}
                 keyExtractor={item => `productItem${item.id.toString()}`}
                 renderItem={({item})=>{
@@ -67,8 +68,10 @@ const FetchProducts =()=> {
                         bPress={()=>postProduct(item.id,imageURL,item.name,item.price)}/> 
                     )
                 }}
-            />  
-    )     
+      />
+   
+  )
+  
 }
 
 export default FetchProducts;
