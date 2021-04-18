@@ -7,6 +7,7 @@ import { watecherSage } from './middleware/rootSaga';
 
 const reducer=combineReducers({
 user:userReducer
+
 });
 
 const sagaMiddleware=createSagaMiddleWare();

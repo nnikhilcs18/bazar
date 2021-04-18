@@ -10,6 +10,7 @@ import {
   Text,
   StyleSheet,
   TextInput,
+  Pressable,
 } from 'react-native';
 import {Input, Button} from 'react-native-elements';
 import Icon from 'react-native-vector-icons/MaterialIcons';
@@ -23,11 +24,13 @@ import store from '../../redux/store';
 const Login = ({navigation}) => {
   const [hidePass, setHidePass] = useState(true);
   const [data, setData] = React.useState({
-    isValidUser: true,
-    isValidPassword: true,
+    showEmailErrorMsg:false,
+    showPasswordErrorMsg:false,
+    isValidEmail: false,
+    isValidPassword: false,
     emailErrorMessage: '',
     passwordErrorMessage: '',
-  });
+    });
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -37,19 +40,22 @@ const Login = ({navigation}) => {
       console.log('empty email');
       setData({
         ...data,
-        isValidUser: false,
+        showEmailErrorMsg:true,
+        isValidEmail: false,
         emailErrorMessage: 'Email Cannot be Empty',
       });
     } else if (!val.match(/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/)) {
       setData({
         ...data,
-        isValidUser: false,
+        showEmailErrorMsg:true,
+        isValidEmail: false,
         emailErrorMessage: 'Invalid Email Format',
       });
     } else {
       setData({
         ...data,
-        isValidUser: false,
+        showEmailErrorMsg:false,
+        isValidEmail: true,
         emailErrorMessage: '',
       });
     }
@@ -61,6 +67,7 @@ const Login = ({navigation}) => {
       console.log('Password cannot be Empty');
       setData({
         ...data,
+        showPasswordErrorMsg:true,
         isValidPassword: false,
         passwordErrorMessage: 'Password cannot be Empty',
       });
@@ -71,6 +78,7 @@ const Login = ({navigation}) => {
     ) {
       setData({
         ...data,
+        showPasswordErrorMsg:true,
         isValidPassword: false,
         passwordErrorMessage:
           'Minimum eight characters, at least one uppercase letter, one lowercase letter, one number and one special character:',
@@ -78,6 +86,7 @@ const Login = ({navigation}) => {
     } else {
       setData({
         ...data,
+        showPasswordErrorMsg:false,
         isValidPassword: true,
         passwordErrorMessage: '',
       });
@@ -86,21 +95,12 @@ const Login = ({navigation}) => {
 //saga implementation
 const dispatch = useDispatch();
 
-
-
-
 const user=useSelector((state)=>state.user.user);
-console.log(typeof 'user')
 
 const checkValidUser= async() =>{
-  console.log("----------Login Page Console----------");
       dispatch(getUser(email,password));
 }
 
-
-
-
-  console.log('test');
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
@@ -117,14 +117,14 @@ const checkValidUser= async() =>{
             autoCorrect={false}
             keyboardType={'email-address'}
             onChangeText={setEmail}
-            onEndEditing={e => handleValidEmail(e.nativeEvent.text)}
+            onChange={e => handleValidEmail(e.nativeEvent.text)}
             onFocus={() => {
-              data.isValidUser = true;
+              data.isValidEmail = true;
             }}
           />
-          {data.isValidUser ? null : (
+          {data.showEmailErrorMsg ? (
             <Text style={styles.errorMsg}>{data.emailErrorMessage}</Text>
-          )}
+          ) : null }
           <Input
             accessibilityLabel="Please Enter your password"
             placeholder="Password"
@@ -141,16 +141,17 @@ const checkValidUser= async() =>{
             autoCapitalize="none"
             autoCorrect={false}
             onChangeText={setPassword}
-            onEndEditing={e => handleValidPassword(e.nativeEvent.text)}
-            onFocus={() => {
+            onChange={e => handleValidPassword(e.nativeEvent.text)}
+            onFocus={() => {  
               data.isValidPassword = true;
             }}
           />
-          {data.isValidPassword ? null : (
+          {data.showPasswordErrorMsg ? (
             <Text style={styles.errorMsg}>{data.passwordErrorMessage} </Text>
-          )}
+          ) : null }
 
           <Button
+            disabled={(data.isValidEmail && data.isValidPassword)?false:true}
             buttonStyle={styles.register}
             title="Login"
             onPress={checkValidUser }

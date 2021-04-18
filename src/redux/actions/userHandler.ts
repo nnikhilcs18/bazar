@@ -6,12 +6,14 @@ import { setUser } from "../reducer/user";
 
 export function* handleGetUser(action){
     try{
-    console.log("---------user handler---------")
-    console.log(action)
+    console.log("---------user handler---------");
     const response=yield call(requestGetUser,action.email,action.password);
+    console.log(typeof 'response');
+    console.log("serverResponse2",response);
     const{data}=response;
+
     yield put(setUser(data));
     }catch(error){
-        console.log(error);
+        console.log("error",error);
     }
 }
