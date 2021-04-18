@@ -1,6 +1,6 @@
 import React,{useState} from 'react';
 import {Image, View, Text, StyleSheet} from 'react-native';
-import Buttons from '../components/button'
+import Buttons from '../../components/button'
 // import colors from '../constants/colors'
 
 const productTemplate =(props)=>{

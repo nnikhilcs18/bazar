@@ -15,7 +15,7 @@ import SafeAreaAndroid from './SafeAreaAndroid';
 import styles from './homestyle'
 // 
 
-import Products from '../Products';
+import Products from '../Product/Products';
 import { Categories } from '../Categories';
 
 

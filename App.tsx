@@ -7,7 +7,7 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 import Login from './src/screens/Login/Login';
 import Register from './src/screens/Register/Register';
 import { Categories } from './src/screens/Categories';
-import Products from './src/screens/Products';
+import Products from './src/screens/Product/Products';
 import Homescreen from './src/screens/Home/Homescreen';
 import Tabs from './src/screens/Tabs';
 
