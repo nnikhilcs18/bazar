@@ -3,16 +3,21 @@
 import {call,put} from "redux-saga/effects";
 import { requestGetUser} from "../middleware/userRequest";
 import { setUser } from "../reducer/user";
-
+import {storeInKeychain} from "../../screens/Login/Keychain"
 export function* handleGetUser(action){
     try{
     console.log("---------user handler---------");
     const response=yield call(requestGetUser,action.email,action.password);
     console.log(typeof 'response');
-    console.log("serverResponse2",response);
+    console.log("serverResponse3",response);
     const{data}=response;
+    storeInKeychain(action.email,action.password);
+    
 
-    yield put(setUser(data));
+
+
+
+    yield put(setUser(response));
     }catch(error){
         console.log("error",error);
     }

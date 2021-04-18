@@ -2,6 +2,7 @@
 //middleware folder
 import * as Keychain from 'react-native-keychain';
 import axios from 'axios';
+import { delay } from '@redux-saga/core/effects';
 
 //working code
 /*export function requestGetUser(email,password){
@@ -19,21 +20,22 @@ import axios from 'axios';
 }*/
 
 export async function requestGetUser(email, password) {
-  const serverResponse = //async () => {
-    //try {
-      //await 
-      axios
+  var data={};
+  var serverResponse =  //async () => {
+  //try {
+      await axios
         .post('http://10.0.2.2:4000/users', {
           email: email,
           password: password,
         })
          .then(function (response) {
-           console.log("serverresponse1",JSON.stringify(response));
+           data=response.data;
+           //console.log("serverresponse1",JSON.stringify(response.data.responseMsg));
          });
-    //} catch (error) {
-      //console.log("error",error);
-    //}
-    //console.log("serverResponse", serverResponse);
-    return serverResponse;
-  };
+    //console.log("serverResponse2",data);
+    //return response;
+
+    return data;
+ // };
+}
 //}

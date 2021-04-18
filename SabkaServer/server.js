@@ -176,7 +176,7 @@ const generateAuthToken = () => {
   return crypto.randomBytes(30).toString('hex');
 }
 
-router.post('/users', (req, res) => {
+app.post('/users', (req, res) => {
   const authTokens = {};
   var responseMsg = "";
   const {
@@ -195,19 +195,24 @@ router.post('/users', (req, res) => {
     const authToken = generateAuthToken();
     responseMsg = "userFound";
     // Store authentication token
+    const data={
+      "token":authTokens,
+      "responseMsg":responseMsg
+    }
     authTokens[authToken] = user;
     console.log(authTokens);
     //res.json(usersObj);
   //res.sendStatus(200)
-  res.send(responseMsg);s
+  res.send(data);
 
   } else {
     console.log("user not found");
     responseMsg = "userNotFound";
-    //return res.sendStatus(309)
-    //return (responseMsg);
+     res.send(responseMsg);
   }
+  res.send(data);
 });
+
 
 
 
