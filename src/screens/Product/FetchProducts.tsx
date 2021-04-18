@@ -75,8 +75,10 @@ const FetchProducts =()=> {
                         bPress={() =>postProduct(item.id,imageURL,item.name,item.price) }/> 
                     )
                 }}
-            />  
-    )     
+      />
+   
+  )
+  
 }
 
 export default FetchProducts;

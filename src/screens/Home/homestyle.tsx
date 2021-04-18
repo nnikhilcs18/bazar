@@ -41,6 +41,7 @@ const styles = StyleSheet.create({
     categoriesList: {
         flex: 2,
         borderBottomColor: 'grey',
+       
         flexDirection: 'row',
         marginBottom: 20,
     },

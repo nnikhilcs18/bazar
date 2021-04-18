@@ -5,13 +5,14 @@ import Header from '../Home/header';
 // import fonts from '../constants/fonts'
 import FetchProducts from './FetchProducts'
 import FlashMessage from "react-native-flash-message";
-export default function Products() {
+export default function Products(navigation) {
   return (
     <View style={styles.main}>
       <ScrollView >
         <TouchableOpacity onPress={() => navigation.navigate('Homescreen')}>
           <Header />
-          </TouchableOpacity>
+
+        </TouchableOpacity>
       <Picker />
       <FetchProducts />
       </ScrollView>
