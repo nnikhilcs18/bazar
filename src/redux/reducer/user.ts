@@ -4,6 +4,7 @@ import { AnyIfEmpty } from "react-redux";
 
 export const GET_USER="GET_USER";
 const SET_USER="SET_USER";
+const ERR_MSG="ERR_MSG";
 
 export const getUser=(email,password)=>({
     type:GET_USER,
