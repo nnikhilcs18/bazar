@@ -20,7 +20,8 @@ export type UserAction=LoginAction | ErrorAction;
 
 export const onLogin=(email:string,password:string)=>{
     return async(dispatch:Dispatch<UserAction>)=>{
-        const response="fetch data here";//url
+        console.log(email);
+        console.log(password);
 
     }
     }

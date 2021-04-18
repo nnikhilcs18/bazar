@@ -3,7 +3,7 @@ import { View, Text, StyleSheet, Image,TouchableOpacity } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Login from './Login/Login';
 import { Categories } from './Categories';
-import Products from './Products';
+import Products from './Product/Products';
 import Homescreen from './Home/Homescreen';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import Cart from './cart';

@@ -1,17 +1,23 @@
 const express = require("express");
+crypto = require('crypto');
 var cors = require("cors");
 var addToCartModule = require("./data/addToCart.js");
 var addToCartArray = addToCartModule.array;
 var bannersObj = require("./data/banners.json");
 var categoriesObj = require("./data/categories.json");
 var productsObj = require("./data/products.json");
+var usersObj = require("./data/users.json")
 
-const { response } = require("express");
+const {
+  response
+} = require("express");
 var app = express(); // one application
 var router = express.Router(); // server side router
 
 // Parse URL-encoded bodies (as sent by HTML forms)
-app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({
+  extended: true
+}));
 
 // Parse JSON bodies (as sent by API clients)
 app.use(express.json());
@@ -27,7 +33,7 @@ router.get("/addToCart", function (req, res) {
 
 router.post("/addToCart", function (req, res) {
 
-  
+
 
   addToCartArray.push({
 
@@ -35,11 +41,11 @@ router.post("/addToCart", function (req, res) {
 
     ImageURL: req.body.image,
 
-    ProductQuantity  :1,
+    ProductQuantity: 1,
 
-    ProductName:req.body.ProductName,
+    ProductName: req.body.ProductName,
 
-    ProductPrice:req.body.Price,
+    ProductPrice: req.body.Price,
 
   });
 
@@ -49,7 +55,9 @@ router.post("/addToCart", function (req, res) {
 
   // OR
 
-  res.json({ success: "Record Inserted successfully" });
+  res.json({
+    success: "Record Inserted successfully"
+  });
 
 });
 // addToCart API
@@ -59,7 +67,7 @@ router.post("/addToCart", function (req, res) {
 // });
 
 // router.post("/addToCart", function (req, res) {
-  
+
 //   addToCartArray.push({
 //     ProductId: req.body.ID,
 //     ImageURL: req.body.image,
@@ -94,7 +102,9 @@ router.post("/products", function (req, res) {
   });
   // res.json(productsObj); //converts js object to JSON
   // OR
-  res.json({ success: "Record Inserted successfully" });
+  res.json({
+    success: "Record Inserted successfully"
+  });
 });
 
 // banners API
@@ -113,7 +123,9 @@ router.post("/banners", function (req, res) {
   });
   // res.json(productsObj); //converts js object to JSON
   // OR
-  res.json({ success: "Record Inserted successfully" });
+  res.json({
+    success: "Record Inserted successfully"
+  });
 });
 
 // categories API
@@ -136,13 +148,94 @@ router.post("/categories", function (req, res) {
   });
   // res.json(productsObj); //converts js object to JSON
   // OR
-  res.json({ success: "Record Inserted successfully" });
+  res.json({
+    success: "Record Inserted successfully"
+  });
 });
+
+router.get("/users", function (req, res) {
+  res.json(usersObj); //converts js object to JSON
+});
+
+// Method:POST , API -> /users
+/*router.post("/users", function (req, res) {
+  console.log(req.body.users); // data received from client side (within request object)
+  usersObj.push({
+    username: req.body.users.username,
+    password: req.body.users.password,
+  });
+  // res.json(productsObj); //converts js object to JSON
+  // OR
+  res.json({ success: "Record Inserted successfully" });
+});*/
+
+
+//server side validation 
+
+const generateAuthToken = () => {
+  return crypto.randomBytes(30).toString('hex');
+}
+
+router.post('/users', (req, res) => {
+  const authTokens = {};
+  var responseMsg = "";
+  const {
+    email,
+    password
+  } = req.body;
+  //const hashedPassword = getHashedPassword(password);
+
+  const user = usersObj.find(u => {
+    return u.username === email && password === u.password
+  });
+  console.log("-------server talking-------")
+  console.log(req.body)
+  if (user) {
+    console.log("user found successfully");
+    const authToken = generateAuthToken();
+    responseMsg = "userFound";
+    // Store authentication token
+    authTokens[authToken] = user;
+    console.log(authTokens);
+    //res.json(usersObj);
+  //res.sendStatus(200)
+  res.send(responseMsg);s
+
+  } else {
+    console.log("user not found");
+    responseMsg = "userNotFound";
+    //return res.sendStatus(309)
+    //return (responseMsg);
+  }
+});
+
+
+
+
+
+
+
+
+
 
 // Home Url (Optional and do not use)
 router.get("/", function (req, res) {
-  res.sendFile("client.html", { root: __dirname });
+  res.sendFile("client.html", {
+    root: __dirname
+  });
 });
+
+
+
+
+
+
+
+
+
+
+
+
 
 app.use(router);
 app.listen(4000, () => console.log("Server running @ 4000 !"));
