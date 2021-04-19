@@ -187,14 +187,14 @@ const Login = ({navigation}) => {
 />*/}
         </View>
 
-        {/*} <Text>
+         <Text>
             <TextInput
             
               style={styles.signInText}
               onPressIn={()=>navigation.navigate('Homescreen')}>
               Skip For now?
             </TextInput>
-</Text>*/}
+          </Text>
 
         <Text>
           Dont have an Account?
