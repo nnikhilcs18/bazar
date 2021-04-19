@@ -122,7 +122,7 @@ const user=useSelector((state)=>state.user.user);
         navigation.navigate('Homescreen');
        }
 
-       }, 100); 
+       }, 500); 
 }
 async function logOut(){
   await Keychain.resetGenericPassword();
