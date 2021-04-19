@@ -178,7 +178,7 @@ const generateAuthToken = () => {
 
 app.post('/users', (req, res) => {
   const authTokens = {};
-  var responseMsg = "";
+  var responseMsg;
   const {
     email,
     password
@@ -197,7 +197,7 @@ app.post('/users', (req, res) => {
     // Store authentication token
     const data={
       "token":authTokens,
-      "responseMsg":responseMsg
+      "responseMsg":true
     }
     authTokens[authToken] = user;
     console.log(authTokens);
@@ -207,7 +207,7 @@ app.post('/users', (req, res) => {
 
   } else {
     console.log("user not found");
-    responseMsg = "userNotFound";
+    responseMsg =false;
      res.send(responseMsg);
   }
   res.send(data);

@@ -11,7 +11,14 @@ export function* handleGetUser(action){
     console.log(typeof 'response');
     console.log("serverResponse3",response);
     const{data}=response;
-    storeInKeychain(action.email,action.password);
+    if(response.responseMsg)
+    {
+         storeInKeychain(action.email,action.password);
+    }
+    else
+    {
+        storeInKeychain(null,null)
+    }
     
 
 

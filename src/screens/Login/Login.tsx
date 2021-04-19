@@ -17,9 +17,10 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 // import colors from '../constants/colors';
 import styles from './LoginStyles';
 import {useDispatch, useSelector, Provider} from 'react-redux';
-import {ApplicationState, onLogin} from '../../redux';
 import { getUser } from '../../redux/reducer/user';
 import store from '../../redux/store';
+import * as Keychain from 'react-native-keychain';
+import { NavigateNextTwoTone } from '@material-ui/icons';
 
 const Login = ({navigation}) => {
   const [hidePass, setHidePass] = useState(true);
@@ -97,8 +98,16 @@ const dispatch = useDispatch();
 
 const user=useSelector((state)=>state.user.user);
 
-const checkValidUser= async() =>{
-      dispatch(getUser(email,password));
+
+
+   function  checkValidUser(){ 
+       const temp= dispatch(getUser(email,password));
+       console.log("---------login-page-------");
+       console.log("-----return dispatch----",user);
+       const credentials= Keychain.getGenericPassword();
+       console.log(credentials);
+       navigation.navigate('Homescreen');
+      
 }
 
   return (
