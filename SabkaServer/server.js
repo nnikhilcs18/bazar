@@ -213,7 +213,7 @@ app.post('/users', (req, res) => {
     }
      res.send(data);
   }
-  res.send(data);
+  //res.send(data);
 });
 
 
