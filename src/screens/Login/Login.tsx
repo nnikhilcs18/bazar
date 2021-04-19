@@ -31,6 +31,8 @@ const Login = ({navigation}) => {
     isValidPassword: false,
     emailErrorMessage: '',
     passwordErrorMessage: '',
+    showValidCredentialsMsg:false,
+    isLoading:false
     });
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -101,14 +103,30 @@ const user=useSelector((state)=>state.user.user);
 
 
    function  checkValidUser(){ 
+       data.isLoading=true;
        const temp= dispatch(getUser(email,password));
-       console.log("---------login-page-------");
+       setTimeout(function(){
+      console.log("---------login-page-------");
        console.log("-----return dispatch----",user);
        const credentials= Keychain.getGenericPassword();
+       console.log("-----this is credentials-----",credentials)
        console.log(credentials);
-       navigation.navigate('Homescreen');
-      
+       if(!user)
+       {
+        data.isLoading=false;
+        data.showValidCredentialsMsg=true
+         
+       }
+       else
+       {
+        navigation.navigate('Homescreen');
+       }
+
+       }, 100); 
 }
+async function logOut(){
+  await Keychain.resetGenericPassword();
+ }
 
   return (
     <KeyboardAvoidingView
@@ -158,12 +176,22 @@ const user=useSelector((state)=>state.user.user);
           {data.showPasswordErrorMsg ? (
             <Text style={styles.errorMsg}>{data.passwordErrorMessage} </Text>
           ) : null }
-
+          {data.showValidCredentialsMsg ? (
+            <Text style={styles.errorMsg}>Invalid UserName or Passowrd</Text>
+          ) : null }
           <Button
             disabled={(data.isValidEmail && data.isValidPassword)?false:true}
+
             buttonStyle={styles.register}
             title="Login"
+            loading={data.isLoading}
             onPress={checkValidUser }
+           //onPress={()=>navigation.navigate('Homescreen')}
+          />
+           <Button
+            buttonStyle={styles.register}
+            title="Logout"
+            onPress={logOut}
            //onPress={()=>navigation.navigate('Homescreen')}
           />
         </View>
