@@ -21,7 +21,7 @@ const Stack = createStackNavigator();
 
 function AppNav() {
   console.disableYellowBox = true;
-  setTimeout(function(){ SplashScreen.hide()}, 3000);
+  setTimeout(function(){ SplashScreen.hide()}, 150);
   return (
     
     <Provider store={store}>

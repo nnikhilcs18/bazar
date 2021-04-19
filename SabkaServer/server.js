@@ -207,10 +207,13 @@ app.post('/users', (req, res) => {
 
   } else {
     console.log("user not found");
-    responseMsg =false;
-     res.send(responseMsg);
+    const data={
+      "token":null,
+      "responseMsg":false
+    }
+     res.send(data);
   }
-  res.send(data);
+  //res.send(data);
 });
 
 
