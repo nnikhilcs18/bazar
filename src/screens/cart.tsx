@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import Header from '../screens/Home/header';
-import ButtonCart from '../components/button'
+import ButtonCart from '../components/button';
+import LeftHeader from './Home/leftheader';
+import RightHeader from './Home/rightheader'
 import {
   ItemsSubscript,
   ImageCart,
@@ -14,9 +16,9 @@ import {
   CheckOutButton,
   Url
 } from '../constants/constantFile'
-import {Button, Text, View, FlatList, Image} from 'react-native';
+import {Button, Text, View, FlatList, Image,TouchableOpacity,StyleSheet} from 'react-native';
 
-const Cart = () => {
+const Cart = ({ navigation }) => {
   const [quantity, setQuantity] = useState(1);
   const incrementFunc = () => {
     setQuantity(quantity + 1);
@@ -44,9 +46,15 @@ const Cart = () => {
   }, []);
 
   return (
-    <Main>
+    <Main styles={styles.container}>
+      <View style={styles.header}>
+        <TouchableOpacity onPress={() => navigation.navigate('Homescreen')} ><LeftHeader /></TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.navigate('Cart')}><RightHeader /></TouchableOpacity>
+      </View>
+      <View style={styles.content}>
       <TextView>
-        <Header/>
+       
+        
         <TopBar>
           My Cart ({data.length} <ItemsSubscript>items</ItemsSubscript> )
         </TopBar>
@@ -65,7 +73,7 @@ const Cart = () => {
                 }}
               />
               <ContainerCart>
-                <ItemHeading>{item.ProductName}</ItemHeading>
+                <ItemHeading numberOfLines={2}>{item.ProductName}</ItemHeading>
                 <Increments>
                   <ButtonCart Press={() => incrementFunc()} title="+" />
                   <Text>{quantity}</Text>
@@ -76,8 +84,29 @@ const Cart = () => {
           );
         }}
       />
-      <CheckOutButton title="Checkout" color="#bf2957" />
+        <CheckOutButton onPress={() => navigation.navigate('Store')}
+          title="Checkout" color="#bf2957" />
+      </View>
     </Main>
   );
 };
 export default Cart;
+const styles = StyleSheet.create({
+  container: {
+   flex:1
+  },
+  header:{
+    flex: 0.8,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    backgroundColor: 'white',
+    margin: 5
+  },
+  content: {
+    flex: 8,
+    flexDirection: 'column'
+  }
+
+})
+

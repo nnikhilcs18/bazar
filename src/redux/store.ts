@@ -5,10 +5,11 @@ import userReducer from "./reducer/user";
 import createSagaMiddleWare from "redux-saga"
 import { watecherSage } from './middleware/rootSaga';
 import productReducer from './reducer/product';
-
+import categoryReducer from './reducer/category';
 const reducer=combineReducers({
 user:userReducer,
-productReducer:productReducer
+    productReducer: productReducer,
+    categoryReducer: categoryReducer,
 });
 
 const sagaMiddleware=createSagaMiddleWare();

@@ -27,6 +27,7 @@
     "react-native-gesture-handler": "^1.10.3",
     "react-native-keychain": "^7.0.0",
     "react-native-material-cards": "^1.0.15",
+    "react-native-open-maps": "^0.3.5",
     "react-native-paper": "^4.7.2",
     "react-native-reanimated": "^2.1.0",
     "react-native-safe-area-context": "^3.2.0",

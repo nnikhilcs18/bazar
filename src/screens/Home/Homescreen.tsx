@@ -1,11 +1,13 @@
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import React, { useEffect, useState } from 'react';
 import { View, Text, StyleSheet, SafeAreaView, ActivityIndicator,TouchableOpacity, FlatList, ScrollView } from 'react-native';
-import { Button, Image } from 'react-native-elements';
+import { Button, Image ,Header} from 'react-native-elements';
 import AppHeader from './header';
 import Slider from './carousel';
 import EStyleSheet from 'react-native-extended-stylesheet';
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import LeftHeader from './leftheader';
+import RightHeader from './rightheader'
 
 
 import MyTabs from './bottomnavigation';
@@ -52,10 +54,8 @@ const Homescreen = ({ navigation }) => {
 
                 <View style={styles.container}>
                 <View style={styles.header} >
-                    <TouchableOpacity onPress={() => navigation.navigate('Homescreen')}>
-                        <AppHeader />
-                        
-                        </TouchableOpacity>
+                    <TouchableOpacity onPress={() => navigation.navigate('Home')} ><LeftHeader /></TouchableOpacity>
+                    <TouchableOpacity onPress={() => navigation.navigate('Cart')}><RightHeader /></TouchableOpacity>
                     </View>
                 <View style={styles.categoriesList}><Slider /></View>
                     <View style={styles.categories} >

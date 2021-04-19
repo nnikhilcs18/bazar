@@ -13,7 +13,13 @@ const styles = StyleSheet.create({
     },
     
     header: {
-        flex: 1
+        flex: 1,
+        flexDirection: 'row',
+        justifyContent:'space-between',
+        alignItems: 'center',
+        backgroundColor: 'white',
+        margin:5
+        
         // position:'absolute'
 
         // borderBottomWidth: 1,

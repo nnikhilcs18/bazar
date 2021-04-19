@@ -7,7 +7,8 @@ import Products from './Product/Products';
 import Homescreen from './Home/Homescreen';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import Cart from './cart';
-import Register from './Register/Register'
+import Register from './Register/Register';
+import Store from './store';
 import HomeIcon from '@material-ui/icons/Home';
 import { createStackNavigator } from '@react-navigation/stack';
 
@@ -104,6 +105,7 @@ function Appbar() {
             <Stack.Screen name="Login" component={Login} />
             <Stack.Screen name="Register" component={Register} />
             <Stack.Screen name="Homescreen" component={Tabs} />
+            <Stack.Screen name="Store" component={Store} />
            
         </Stack.Navigator>
     );
