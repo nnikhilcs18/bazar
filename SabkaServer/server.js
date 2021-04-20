@@ -194,15 +194,12 @@ app.post('/users', (req, res) => {
     console.log("user found successfully");
     const authToken = generateAuthToken();
     responseMsg = "userFound";
-    // Store authentication token
     const data={
       "token":authTokens,
       "responseMsg":true
     }
     authTokens[authToken] = user;
     console.log(authTokens);
-    //res.json(usersObj);
-  //res.sendStatus(200)
   res.send(data);
 
   } else {
@@ -213,7 +210,6 @@ app.post('/users', (req, res) => {
     }
      res.send(data);
   }
-  //res.send(data);
 });
 
 
