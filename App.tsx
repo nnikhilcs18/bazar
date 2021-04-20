@@ -11,7 +11,7 @@ import { Categories } from './src/screens/Categories';
 import Products from './src/screens/Product/Products';
 import Homescreen from './src/screens/Home/Homescreen';
 import Tabs from './src/screens/Tabs';
-
+import FlashMessage from "react-native-flash-message";
 //implementing saga
 import store from "./src/redux/store"
 import { Provider } from 'react-redux';
@@ -28,6 +28,7 @@ function AppNav() {
     <NavigationContainer>
       <Tabs />
     </NavigationContainer>
+    <FlashMessage position="top" />
     </Provider>
       
   );

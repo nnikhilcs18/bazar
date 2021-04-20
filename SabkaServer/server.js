@@ -36,11 +36,8 @@ router.post("/addToCart", function (req, res) {
   let itemIndex = addToCartArray.findIndex(
     element => element.ProductId === req.body.ID,
   );
-  // console.log(req.body.ID,'<<==ID IS HERE')
-  // console.log(itemIndex,'<<==item ka index IS HERE')
   if(itemIndex>=0){
     addToCartArray[itemIndex].ProductQuantity=addToCartArray[itemIndex].ProductQuantity+1
-    // console.log("INSIDE FUNCTION ADD TO CART",addToCartArray)
   }
   else{
     addToCartArray.push({

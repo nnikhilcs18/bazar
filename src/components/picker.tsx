@@ -41,6 +41,7 @@ const picker = () => {
                     selectedValue={selectedLanguage}
                     onValueChange={(value) => {
                         arrayCat = (dataProd.filter(item => item.category == value));
+                        setSelectedLanguage(value)
                         console.log(arrayCat);
                         dispatch(selectedCategory(arrayCat));
                     }}

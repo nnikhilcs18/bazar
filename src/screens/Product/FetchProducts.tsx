@@ -12,7 +12,7 @@ const FetchProducts = (props) => {
 
   const productsSelected = useSelector(state => state.productReducer)
   const categorySelected = useSelector(state => state.categoryReducer.arrayCat)
-  console.log("PRODUCT STATE",productsSelected)
+  // console.log("PRODUCT STATE",productsSelected)
 
   const dispatch = useDispatch()
   const [data, setData] = useState([])
