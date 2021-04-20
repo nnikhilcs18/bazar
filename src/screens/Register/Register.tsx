@@ -17,7 +17,7 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import styles from './RegisterStyles';
 import {useDispatch, useSelector, Provider} from 'react-redux';
 //import {ApplicationState, onLogin} from '../../redux';
-
+import {registerUser} from '../../redux/reducer/register';
 const Register = ({navigation}) => {
   const [hidePass, setHidePass] = useState(true);
   const [data, setData] = React.useState({
@@ -36,6 +36,8 @@ const Register = ({navigation}) => {
     confirmPasswordErrorMsg: '',
     FnameErrorMsg: '',
     LNameErrorMsg: '',
+    isDuplicateUser:false,
+    duplicateUserErrorMsg:''
   });
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -154,6 +156,35 @@ const Register = ({navigation}) => {
           });
         }
       };
+
+    //redux saga 
+    const dispatch=useDispatch();
+    
+  
+      const user = useSelector(state => state.reguser.reguser);
+   // console.log("registerpage chack----------",user)
+      
+
+
+      async function handelRegisterButton(){
+        dispatch(registerUser(email,password));
+        if(!user)
+        {
+          data.isDuplicateUser=true;
+          data.duplicateUserErrorMsg="User Already Exist";
+        }
+        else
+        {
+          data.isDuplicateUser=false;
+          
+
+
+        }
+      }
+    
+  
+    
+
       return (
         <KeyboardAvoidingView
           behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
@@ -171,7 +202,7 @@ const Register = ({navigation}) => {
                 autoCapitalize="none"
                 autoCorrect={false}
                 onChangeText={setFName}
-                onEndEditing={e => handelFName(e.nativeEvent.text)}
+                onChange={e => handelFName(e.nativeEvent.text)}
                 onFocus={() => {
                   data.isValidFName = true;
                 }}
@@ -186,7 +217,7 @@ const Register = ({navigation}) => {
                 autoCorrect={false}
                 keyboardType={'email-address'}
                 onChangeText={setLName}
-                onEndEditing={e => handelLName(e.nativeEvent.text)}
+                onChange={e => handelLName(e.nativeEvent.text)}
                 onFocus={() => {
                   data.isValidLName = true;
                 }}
@@ -202,7 +233,7 @@ const Register = ({navigation}) => {
                 autoCorrect={false}
                 keyboardType={'email-address'}
                 onChangeText={setEmail}
-                onEndEditing={e => handleValidEmail(e.nativeEvent.text)}
+                onChange={e => handleValidEmail(e.nativeEvent.text)}
                 onFocus={() => {
                   data.isValidEmail = true;
                 }}
@@ -226,7 +257,7 @@ const Register = ({navigation}) => {
                 autoCapitalize="none"
                 autoCorrect={false}
                 onChangeText={setPassword}
-                onEndEditing={e => handleValidPassword(e.nativeEvent.text)}
+                onChange={e => handleValidPassword(e.nativeEvent.text)}
                 onFocus={() => {
                   data.isValidPassword = true;
                 }}
@@ -244,7 +275,7 @@ const Register = ({navigation}) => {
                 autoCapitalize="none"
                 autoCorrect={false}
                 onChangeText={setConfirmPassword}
-                onEndEditing={e => handelConfirmPassowrd(e.nativeEvent.text)}
+                onChange={e => handelConfirmPassowrd(e.nativeEvent.text)}
                 onFocus={() => {
                   data.isValidConfirmPassowrd = true;
                 }}
@@ -254,12 +285,18 @@ const Register = ({navigation}) => {
                   {data.confirmPasswordErrorMsg}
                 </Text>
               )}
+              {data.isDuplicateUser ?  (
+                <Text style={styles.errorMsg}>
+                  {data.duplicateUserErrorMsg}
+                </Text>
+              ):null}
+
 
               <Button
               disabled={(data.isValidEmail && data.isValidPassword && data.isValidConfirmPassowrd && data.isValidFName && data.isValidLName)?false:true}
                 buttonStyle={styles.registerBtn}
                 title="Create New Account"
-                onPress={() => navigation.navigate('Login')}
+                onPress={handelRegisterButton}
               />
             </View>
 

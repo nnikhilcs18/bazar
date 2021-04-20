@@ -101,10 +101,7 @@ const Login = ({navigation}) => {
 
   async function checkValidUser() {
     data.isLoading = true;
-    const temp = dispatch(getUser(email, password));
-    //setTimeout(function () {
-    console.log('---------login-page-------');
-    console.log('-----return dispatch----', user);
+    dispatch(getUser(email, password));
     Keychain.getGenericPassword().then(credentials => {
       console.log('type of credentials', typeof credentials);
       if (!credentials) {
@@ -116,7 +113,7 @@ const Login = ({navigation}) => {
       }
     });
 
-    //}, 500);
+
   }
   async function logOut() {
     await Keychain.resetGenericPassword();

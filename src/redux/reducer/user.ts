@@ -6,6 +6,7 @@ export const GET_USER="GET_USER";
 const SET_USER="SET_USER";
 const ERR_MSG="ERR_MSG";
 
+
 export const getUser=(email,password)=>({
     type:GET_USER,
     email:email,
@@ -21,11 +22,14 @@ export const setUser=(user)=>({
     user:user
 })
 
+
 export default (state=initialState,action)=>{
     switch(action.type)
     {
         case SET_USER:
         {
+            console.log("=======SET_REGISTER_USER======")
+            console.log(action);
             const {user}=action;
             return {...state,user:user};
         }
@@ -35,4 +39,5 @@ export default (state=initialState,action)=>{
         }
     }
 }
+
 
