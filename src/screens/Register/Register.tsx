@@ -18,6 +18,7 @@ import styles from './RegisterStyles';
 import {useDispatch, useSelector, Provider} from 'react-redux';
 //import {ApplicationState, onLogin} from '../../redux';
 import {registerUser} from '../../redux/reducer/register';
+import { showMessage, hideMessage } from "react-native-flash-message";
 const Register = ({navigation}) => {
   const [hidePass, setHidePass] = useState(true);
   const [data, setData] = React.useState({
@@ -175,8 +176,13 @@ const Register = ({navigation}) => {
         }
         else
         {
+        showMessage({
+         message: "User Account created Successfully ",
+            type: "success",
+          });
           data.isDuplicateUser=false;
-          
+          navigation.navigate('Login')
+
 
 
         }
