@@ -4,7 +4,7 @@ import Picker from '../../components/picker';
 import Header from '../Home/header';
 // import fonts from '../constants/fonts'
 import FetchProducts from './FetchProducts'
-import FlashMessage from "react-native-flash-message";
+
 const urlProduct = 'http://10.0.2.2:4000/products'
 export default function Products({ navigation }) {
   // const [data, setData] = useState([])
@@ -28,7 +28,7 @@ export default function Products({ navigation }) {
         <Picker />
         <FetchProducts />
       </ScrollView>
-      <FlashMessage position="top" />
+      
 
 
 

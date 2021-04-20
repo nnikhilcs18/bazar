@@ -1,12 +1,17 @@
 import React,{useState} from 'react';
-import {Image, View, Text, StyleSheet,TouchableOpacity} from 'react-native';
+import {View, Text, StyleSheet,TouchableOpacity} from 'react-native';
 // import colors from '../constants/colors'
 
 
 const button = (props)=>{
     return(
-            <TouchableOpacity onPress={props.Press} style={styles.btn}>
-                <Text style={styles.btnText}>{props.title}</Text>
+            <TouchableOpacity 
+            accessible={true}
+            accessibilityLabel="Tap me!"
+            accessibilityHint="Cart action will be performed"
+            accessibilityRole="button"
+            onPress={props.Press} style={styles.btn}>
+                <Text accessibilityLiveRegion="polite" style={styles.btnText}>{props.title}</Text>
             </TouchableOpacity>
         )
 }
