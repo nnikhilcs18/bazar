@@ -99,22 +99,24 @@ const Login = ({navigation}) => {
 
   const user = useSelector(state => state.user.user);
 
-  function checkValidUser() {
+  async function checkValidUser() {
     data.isLoading = true;
     const temp = dispatch(getUser(email, password));
-    setTimeout(function () {
-      console.log('---------login-page-------');
-      console.log('-----return dispatch----', user);
-      const credentials = Keychain.getGenericPassword();
-      console.log('-----this is credentials-----', credentials);
-      console.log(credentials);
-      if (!user) {
+    //setTimeout(function () {
+    console.log('---------login-page-------');
+    console.log('-----return dispatch----', user);
+    Keychain.getGenericPassword().then(credentials => {
+      console.log('type of credentials', typeof credentials);
+      if (!credentials) {
         data.isLoading = false;
         data.showValidCredentialsMsg = true;
       } else {
+        data.isLoading = false;
         navigation.navigate('Homescreen');
       }
-    }, 500);
+    });
+
+    //}, 500);
   }
   async function logOut() {
     await Keychain.resetGenericPassword();
@@ -169,7 +171,7 @@ const Login = ({navigation}) => {
             <Text style={styles.errorMsg}>{data.passwordErrorMessage} </Text>
           ) : null}
           {data.showValidCredentialsMsg ? (
-            <Text style={styles.errorMsg}>Invalid UserName or Passowrd</Text>
+            <Text style={styles.errorMsg}>Invalid UserName or Passoword</Text>
           ) : null}
           <Button
             disabled={data.isValidEmail && data.isValidPassword ? false : true}
@@ -179,22 +181,21 @@ const Login = ({navigation}) => {
             onPress={checkValidUser}
             //onPress={()=>navigation.navigate('Homescreen')}
           />
-          {/*<Button
+          <Button
             buttonStyle={styles.register}
             title="Logout"
             onPress={logOut}
-           //onPress={()=>navigation.navigate('Homescreen')}
-/>*/}
+            //onPress={()=>navigation.navigate('Homescreen')}
+          />
         </View>
 
-         <Text>
-            <TextInput
-            
-              style={styles.signInText}
-              onPressIn={()=>navigation.navigate('Homescreen')}>
-              Skip For now?
-            </TextInput>
-          </Text>
+        <Text>
+          <TextInput
+            style={styles.signInText}
+            onPressIn={() => navigation.navigate('Homescreen')}>
+            Skip For now?
+          </TextInput>
+        </Text>
 
         <Text>
           Dont have an Account?

@@ -6,10 +6,7 @@ import { setUser } from "../reducer/user";
 import {storeInKeychain} from "../../screens/Login/Keychain"
 export function* handleGetUser(action){
     try{
-    console.log("---------user handler---------");
     const response=yield call(requestGetUser,action.email,action.password);
-    console.log(typeof 'response');
-    console.log("serverResponse3",response);
     const{data}=response;
     if(response.responseMsg)
     {
@@ -17,13 +14,8 @@ export function* handleGetUser(action){
     }
     else
     {
-        storeInKeychain(null,null)
+        //storeInKeychain(null,null)
     }
-    
-
-
-
-
     yield put(setUser(response));
     }catch(error){
         console.log("error",error);

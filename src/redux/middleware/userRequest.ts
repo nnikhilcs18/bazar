@@ -21,8 +21,7 @@ import { delay } from '@redux-saga/core/effects';
 
 export async function requestGetUser(email, password) {
   var data={};
-  var serverResponse =  //async () => {
-  //try {
+  var serverResponse =  
       await axios
         .post('http://10.0.2.2:4000/users', {
           email: email,
@@ -30,12 +29,9 @@ export async function requestGetUser(email, password) {
         })
          .then(function (response) {
            data=response.data;
-           //console.log("serverresponse1",JSON.stringify(response.data.responseMsg));
          });
-    //console.log("serverResponse2",data);
-    //return response;
 
     return data;
- // };
+
 }
-//}
+

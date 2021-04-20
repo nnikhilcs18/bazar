@@ -22,8 +22,6 @@ export const setUser=(user)=>({
 })
 
 export default (state=initialState,action)=>{
-    console.log("----------reducer------------");
-    console.log(action);
     switch(action.type)
     {
         case SET_USER:

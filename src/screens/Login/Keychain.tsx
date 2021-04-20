@@ -8,8 +8,8 @@ export async function  storeInKeychain(email,pass,){
     try{
         const credentials=await Keychain.getGenericPassword();
         if(credentials){
-            console.log('credentials Successfully loaded for user' + credentials.username);
-            //navigation.navigate('Register')}
+            console.log('credentials Successfully loaded for user ' + credentials.username +' '+credentials.password);
+            console.log("---keychain page------",credentials);
         }
         else{
             console.log('no Credentials stored');
@@ -18,7 +18,7 @@ export async function  storeInKeychain(email,pass,){
     catch(error){
         console.log("keychain couldnt be accessed",error);
     }
-    await Keychain.resetGenericPassword();
+    //await Keychain.resetGenericPassword();
 
 
 }
