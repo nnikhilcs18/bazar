@@ -33,52 +33,32 @@ router.get("/addToCart", function (req, res) {
 
 router.post("/addToCart", function (req, res) {
 
+  let itemIndex = addToCartArray.findIndex(
+    element => element.ProductId === req.body.ID,
+  );
+  // console.log(req.body.ID,'<<==ID IS HERE')
+  // console.log(itemIndex,'<<==item ka index IS HERE')
+  if(itemIndex>=0){
+    addToCartArray[itemIndex].ProductQuantity=addToCartArray[itemIndex].ProductQuantity+1
+    // console.log("INSIDE FUNCTION ADD TO CART",addToCartArray)
+  }
+  else{
+    addToCartArray.push({
 
-
-  addToCartArray.push({
-
-    ProductId: req.body.ID,
-
-    ImageURL: req.body.image,
-
-    ProductQuantity: 1,
-
-    ProductName: req.body.ProductName,
-
-    ProductPrice: req.body.Price,
-
-  });
-
-  // console.log(addToCartArray)
-
-  // res.json(addToCartObj); //converts js object to JSON
-
-  // OR
+      ProductId: req.body.ID,
+      ImageURL: req.body.image,
+      ProductQuantity: 1,
+      ProductName: req.body.ProductName,
+      ProductPrice: req.body.Price,
+  
+    });
+  }
 
   res.json({
     success: "Record Inserted successfully"
   });
 
 });
-// addToCart API
-// Method:GET , API -> /addToCart
-// router.get("/addToCart", function (req, res) {
-//   res.json(addToCartArray); //converts js object to JSON
-// });
-
-// router.post("/addToCart", function (req, res) {
-
-//   addToCartArray.push({
-//     ProductId: req.body.ID,
-//     ImageURL: req.body.image,
-//     ProductQuantity  :1,
-//   });
-//   console.log(addToCartArray)
-//   // res.json(addToCartObj); //converts js object to JSON
-//   // OR
-//   res.json({ success: "Record Inserted successfully" });
-// });
-
 
 
 
