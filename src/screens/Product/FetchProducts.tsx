@@ -57,9 +57,6 @@ const FetchProducts = (props) => {
     fetch(urlProduct).then(response => response.json())
       .then(json => {
         setData(json)
-        // console.log("data is", data);
-
-
       })
       .catch((error) => { console.error(error); })
 
