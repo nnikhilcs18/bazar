@@ -1,19 +1,19 @@
-export const ADD_PRODUCT = 'ADD_PRODUCT'
+
+//export const ADD_PRODUCT = 'ADD_PRODUCT'
 
 //CREATING ACTIONS
-export function addProduct(product) {
-    console.log("inside dispatch function",product.ID)
-  return {
-    type: ADD_PRODUCT,
-    payload:product
-    // id: product.productID,
-    // image:product.image,
-    // productName:product.productName,
-    // price:product.price,
-  }
-}
+// export function addProduct(product) {
+//   return {
+//     type: ADD_PRODUCT,
+//     payload:product
+//     // id: product.productID,
+    
+//   }
+// }
 
 // CREATING REDUCER
+import {ADD_PRODUCT,INCREMENT,DECREMENT} from '../actions/actionTypes'
+
 
 const initialState = 
   {
@@ -28,7 +28,7 @@ function productReducer(state = initialState, action) {
     case ADD_PRODUCT:
     
       let updatedCartItems = state.cartItems;
-      // console.log("action playlooad IDDDDD",action.payload.ID)
+      //console.log("action playlooad IDDDDD",action.payload)
       let alreadyPresentItemIndex = updatedCartItems.findIndex(
         element => element.ID == action.payload.ID,
       );
@@ -47,11 +47,47 @@ function productReducer(state = initialState, action) {
         action.payload.totalPrice = action.payload.price;
         updatedCartItems = [...state.cartItems, action.payload];
       }
-      return Object.assign({}, state, {
+      return {
+        ...state,
         cartItems: updatedCartItems,
         itemCount: state.itemCount + 1,
         totalBill: state.totalBill + action.payload.price,
+      };
+      case INCREMENT:
+    let dummyCartItems = state.cartItems;
+      dummyCartItems.map((item) => {
+        if (action.payload.ID === item.ID) {
+          item.quantity++;
+        }
       });
+      return  {
+          ...state,
+          
+        cartItems: [...dummyCartItems],
+        //cartBill: state.cartBill + action.payload.ProductPrice,
+      };
+ 
+ case DECREMENT:
+    dummyCartItems = state.cartItems;
+    if (action.payload.quantity === 1) {
+        dummyCartItems = state.cartItems.filter(
+          (item) => item.ID !== action.payload.ID,
+        );
+      } else {
+        dummyCartItems.map((item) => {
+          if (action.payload.ID === item.ID) {
+            item.quantity--;
+            //item.totalPrice -= item.price;
+          }
+        });
+      }
+      return {
+          ...state,
+        cartItems: [...dummyCartItems],
+        //totalBill: state.totalBill - action.payload.price,
+        //cartBill: state.cartBill - action.payload.ProductPrice,
+      };
+
     
     default:
       return state

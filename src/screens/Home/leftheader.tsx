@@ -9,7 +9,7 @@ import { useSelector, useDispatch } from 'react-redux'
 
 
 const LeftHeader = () => {
- const count = useSelector(state => state.productReducer.counter)
+ const count = useSelector(state => state.productReducer.itemcounter)
 
     return (
 

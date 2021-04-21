@@ -8,7 +8,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { selectedCategory } from '../redux/reducer/category';
 import LeftHeader from './Home/leftheader';
 import RightHeader from './Home/rightheader';
-// import {useNetInfo} from "@react-native-community/netinfo";
+//import {useNetInfo} from "@react-native-community/netinfo";
 
 
 // import { createStackNavigator, createAppContainer } from 'react-navigation';
@@ -16,7 +16,7 @@ import RightHeader from './Home/rightheader';
 import { createStackNavigator } from 'react-navigation-stack';
 // const url='http://10.0.2.2/categories';
 export const Categories = ({ navigation }) => {
-    const netInfo = useNetInfo();
+   // const netInfo = useNetInfo();
     const dispatch = useDispatch();
     const categorySelected = useSelector(state => state.categoryReducer)
 

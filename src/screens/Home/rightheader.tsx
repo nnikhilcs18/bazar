@@ -9,7 +9,7 @@ import { useSelector, useDispatch } from 'react-redux'
 const cart = <Icon name={'shopping-cart'} color={'red'} size={30} />;
 
 const RightHeader = () => {
-    const count = useSelector(state => state.productReducer.counter)
+    const count = useSelector(state => state.productReducer.itemCount)
 
     return (
 

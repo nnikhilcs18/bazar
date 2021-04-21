@@ -1,0 +1,1 @@
+{"cartItems": [{"ID": "5b6c6a7f01a7c38429530883", "image": "https://raw.githubusercontent.com/gautam-in/shopping-cart-assignment/master/static/images/products/fruit-n-veg/kiwi-green.jpg", "price": 87, "productName": "Fresho Kiwi - Green, 3 pcs", "quantity": 1, "totalPrice": 87}], "itemCount": 1, "totalBill": 87}
