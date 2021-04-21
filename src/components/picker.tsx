@@ -5,7 +5,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { selectedCategory } from '../redux/reducer/category';
 // import colors from '../constants/colors';
 
-const picker = () => {
+const picker = (props) => {
 
     const [selectedLanguage, setSelectedLanguage] = useState();
     const dispatch = useDispatch();
@@ -38,11 +38,10 @@ const picker = () => {
             <View style={styles.pick}>
                 <Picker
                     style={styles.picker}
-                    selectedValue={selectedLanguage}
+                    selectedValue={props.name}
                     onValueChange={(value) => {
                         arrayCat = (dataProd.filter(item => item.category == value));
-                        setSelectedLanguage(value)
-                        console.log(arrayCat);
+                        // console.log(arrayCat);
                         dispatch(selectedCategory(arrayCat));
                     }}
                 // {(itemValue, itemIndex) =>

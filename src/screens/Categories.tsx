@@ -7,7 +7,8 @@ import Icon from 'react-native-vector-icons/FontAwesome5';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectedCategory } from '../redux/reducer/category';
 import LeftHeader from './Home/leftheader';
-import RightHeader from './Home/rightheader'
+import RightHeader from './Home/rightheader';
+import {useNetInfo} from "@react-native-community/netinfo";
 
 
 // import { createStackNavigator, createAppContainer } from 'react-navigation';
@@ -15,10 +16,11 @@ import RightHeader from './Home/rightheader'
 import { createStackNavigator } from 'react-navigation-stack';
 // const url='http://10.0.2.2/categories';
 export const Categories = ({ navigation }) => {
+    const netInfo = useNetInfo();
     const dispatch = useDispatch();
     const categorySelected = useSelector(state => state.categoryReducer)
 
-    console.log("Category STATE", categorySelected)
+    // console.log("Category STATE", categorySelected)
 
     // const [isLoading,setLoading]=useState(true)
     const [data, setData] = useState([]);
@@ -42,6 +44,12 @@ export const Categories = ({ navigation }) => {
                 setProd(json)
             })
             .catch((error) => { console.error(error); })
+            if(!netInfo.isConnected){
+                Alert.alert("Net available");
+            }
+            else{
+                Alert.alert("Net not available");
+            }
 
     }, [])
     const onPressFunction = (obj) => {
@@ -50,7 +58,7 @@ export const Categories = ({ navigation }) => {
         // console.log(arrayCat);
 
         dispatch(selectedCategory(arrayCat));
-        navigation.navigate('Products');
+        navigation.navigate('Products',{catName:obj});
     }
 
 
