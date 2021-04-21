@@ -1,10 +1,1 @@
-[
-	{
-	  "username":"admin@gmail.com",
-	  "password":"Admin@123"
-	},
-	{
-	  "username":"user",
-	  "password":"User@123"
-	}
-  ]
+[{"username":"admin@gmail.com","password":"Admin@123"},{"username":"nik@publicisgroup.net","password":"Admin@123"},{"username":"admin2@gmail.com","password":"Admin@123"},{"username":"eshika@gmail.com","password":"Eshika@123"}]

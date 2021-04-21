@@ -6,10 +6,12 @@ import createSagaMiddleWare from "redux-saga"
 import { watecherSage } from './middleware/rootSaga';
 import productReducer from './reducer/product';
 import categoryReducer from './reducer/category';
+import registerReducer from './reducer/register'
 const reducer=combineReducers({
-user:userReducer,
+    user:userReducer,
     productReducer: productReducer,
     categoryReducer: categoryReducer,
+    reguser:registerReducer,
 });
 
 const sagaMiddleware=createSagaMiddleWare();

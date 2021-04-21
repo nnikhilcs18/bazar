@@ -11,6 +11,7 @@ var usersObj = require("./data/users.json")
 const {
   response
 } = require("express");
+const { fstat } = require("fs");
 var app = express(); // one application
 var router = express.Router(); // server side router
 
@@ -146,7 +147,6 @@ router.get("/users", function (req, res) {
   res.json({ success: "Record Inserted successfully" });
 });*/
 
-
 //server side validation 
 
 const generateAuthToken = () => {
@@ -154,38 +154,93 @@ const generateAuthToken = () => {
 }
 
 app.post('/users', (req, res) => {
+
   const authTokens = {};
   var responseMsg;
   const {
     email,
-    password
+    password,
+    type,
   } = req.body;
   //const hashedPassword = getHashedPassword(password);
 
-  const user = usersObj.find(u => {
-    return u.username === email && password === u.password
-  });
-  console.log("-------server talking-------")
-  console.log(req.body)
-  if (user) {
-    console.log("user found successfully");
-    const authToken = generateAuthToken();
-    responseMsg = "userFound";
-    const data={
-      "token":authTokens,
-      "responseMsg":true
+  if (req.body.type == "register") {
+    var isUserExist = false;
+    const data = {
+      "responseMsg": isUserExist
     }
-    authTokens[authToken] = user;
-    console.log(authTokens);
-  res.send(data);
+    console.log("this is register function in server", req.body);
+    var user = usersObj.find(u => {
+      return u.username === email
+    });
+    if (user) {
+      console.log("user present")
+      isUserExist: true
+    } 
+    
+    else {
+      const fs = require('fs')
+      const writeData={
+        username:email,
+        password:password
+      }
+      const jsonString=JSON.stringify(writeData);
+      fs.readFile('./data/users.json','utf-8',function(err,data){
+        if(err)
+        throw err;
+        var arrayOfObject=JSON.parse(data)
+        arrayOfObject.push({
+          "username":email,
+          "password":password
+        })
+        console.log(arrayOfObject);
 
-  } else {
-    console.log("user not found");
-    const data={
-      "token":null,
-      "responseMsg":false
+        fs.writeFile('./data/users.json',JSON.stringify(arrayOfObject),'utf-8',function(err){
+          if(err)throw err
+          
+        })
+      })
+
+
+      /*fs.appendFile('./data/users.json',jsonString,err=>{
+        if(err)
+        {
+          console.log("error writing file",err);
+        }
+        else{
+          console.log("successfully writen to file");
+        }
+      })*/
+
     }
-     res.send(data);
+    res.send(data)
+  } 
+  else {
+    const user = usersObj.find(u => {
+      return u.username === email && password === u.password
+    });
+    console.log("-------server talking-------")
+    console.log(req.body)
+    if (user) {
+      console.log("user found successfully");
+      const authToken = generateAuthToken();
+      responseMsg = "userFound";
+      const data = {
+        "token": authTokens,
+        "responseMsg": true
+      }
+      authTokens[authToken] = user;
+      console.log(authTokens);
+      res.send(data);
+
+    } else {
+      console.log("user not found");
+      const data = {
+        "token": null,
+        "responseMsg": false
+      }
+      res.send(data);
+    }
   }
 });
 

@@ -26,6 +26,7 @@ export async function requestGetUser(email, password) {
         .post('http://10.0.2.2:4000/users', {
           email: email,
           password: password,
+          type:"login"
         })
          .then(function (response) {
            data=response.data;
