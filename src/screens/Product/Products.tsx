@@ -3,10 +3,9 @@ import { StyleSheet, Text, View, ScrollView, TouchableOpacity } from 'react-nati
 import Picker from '../../components/picker';
 import Header from '../Home/header';
 // import fonts from '../constants/fonts'
-import styles from './ProductStyles'
+import styles from './styles/ProductStyles'
 import FetchProducts from './FetchProducts'
 
-const urlProduct = 'http://10.0.2.2:4000/products'
 export default function Products({ navigation,route }) {
   const sample = "5b68994e3d1a866534f516df";
   const  catName  = (route.params)?route.params.catName : sample;

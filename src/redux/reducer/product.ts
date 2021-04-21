@@ -53,6 +53,8 @@ function productReducer(state = initialState, action) {
         itemCount: state.itemCount + 1,
         totalBill: state.totalBill + action.payload.price,
       };
+
+      
       case INCREMENT:
     let dummyCartItems = state.cartItems;
       dummyCartItems.map((item) => {

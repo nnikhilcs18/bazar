@@ -3,32 +3,32 @@
 import { AnyIfEmpty } from "react-redux";
 
 export const GET_PRODUCT="GET_PRODUCT";
-const POST_PRODUCT="POST_PRODUCT";
+const SET_PRODUCT="SET_PRODUCT";
 const ERR_MSG="ERR_MSG";
 
 
-export const getProduct=(url)=>({
+export const getProduct=()=>({
     type:GET_PRODUCT,
-    payload:url
+    url:'http://10.0.2.2:4000/products'
 });
-const initialState={
-    productsList:[]
-};
-export const gpostProduct=(url,productDetails)=>({
-    type:POST_PRODUCT,
-    payload:productDetails
+
+export const setProduct=(productList:object)=>({
+    type:SET_PRODUCT,
+    productList
 })
+
+const initialState={
+    productsList:null
+};
 
 
 export default (state=initialState,action)=>{
     switch(action.type)
     {
-        case SET_USER:
+        case SET_PRODUCT:
         {
-            console.log("=======SET_REGISTER_USER======")
-            console.log(action);
-            const {user}=action;
-            return {...state,action.payload};
+            const {productList}=action
+            return {...state,productList };
         }
         default:
         {

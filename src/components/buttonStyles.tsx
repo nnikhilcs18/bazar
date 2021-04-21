@@ -1,14 +1,16 @@
 
 import { StyleSheet } from "react-native";
+import {colors} from '../constants/colors'
 const styles=StyleSheet.create({
     btn:{
-        backgroundColor:"#bf2957",
-        height:45,        
-        padding:10,
+        backgroundColor:colors.primary,
+        height:'30%',        
+        padding:'3%',
+        width:'80%'
 
     },
     btnText:{
-        color:"white",
+        color:colors.white,
         alignSelf:'center',
         fontSize:16,
     },
