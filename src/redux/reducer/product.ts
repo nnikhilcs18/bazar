@@ -1,18 +1,5 @@
 
-//export const ADD_PRODUCT = 'ADD_PRODUCT'
-
-//CREATING ACTIONS
-// export function addProduct(product) {
-//   return {
-//     type: ADD_PRODUCT,
-//     payload:product
-//     // id: product.productID,
-    
-//   }
-// }
-
-// CREATING REDUCER
-import {ADD_PRODUCT,INCREMENT,DECREMENT} from '../actions/actionTypes'
+import {ADD_PRODUCT,INCREMENT,DECREMENT} from '../actions/actionTypes';
 
 
 const initialState = 
@@ -20,7 +7,7 @@ const initialState =
     
     cartItems:[],
     itemCount: 0,
-    totalBill: 0,
+    billAmount: 0,
   }
 
 function productReducer(state = initialState, action) {
@@ -51,7 +38,8 @@ function productReducer(state = initialState, action) {
         ...state,
         cartItems: updatedCartItems,
         itemCount: state.itemCount + 1,
-        totalBill: state.totalBill + action.payload.price,
+        billAmount: state.billAmount + action.payload.price,
+
       };
       case INCREMENT:
     let dummyCartItems = state.cartItems;
@@ -62,9 +50,10 @@ function productReducer(state = initialState, action) {
       });
       return  {
           ...state,
-          
         cartItems: [...dummyCartItems],
-        //cartBill: state.cartBill + action.payload.ProductPrice,
+        billAmount:state.billAmount+action.payload.price,
+        itemCount: state.itemCount + 1,
+       
       };
  
  case DECREMENT:
@@ -77,6 +66,7 @@ function productReducer(state = initialState, action) {
         dummyCartItems.map((item) => {
           if (action.payload.ID === item.ID) {
             item.quantity--;
+            
             //item.totalPrice -= item.price;
           }
         });
@@ -86,12 +76,16 @@ function productReducer(state = initialState, action) {
         cartItems: [...dummyCartItems],
         //totalBill: state.totalBill - action.payload.price,
         //cartBill: state.cartBill - action.payload.ProductPrice,
+        billAmount:state.billAmount-action.payload.price,
+        itemCount: state.itemCount - 1,
       };
-
+      
     
     default:
       return state
   }
+
+  
 }
 
 export default productReducer

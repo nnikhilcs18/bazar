@@ -60,11 +60,15 @@ export const ItemHeading =  styled.Text`
     flex: 1;
     font-size:20px;
     `;
-export const CheckOutButton = styled.Button`
+export const CheckOutButton = styled.TouchableOpacity`
   flex:1;
+  width:100%;
+  height:5%;
   position:absolute;
+  padding-top:2%;
   bottom:0;
-  align-self:center;
+  align-items:center;
+  background-color:#bf2957;
   `;
   export const TotalText = styled.Text`
   font-weight:bold;
