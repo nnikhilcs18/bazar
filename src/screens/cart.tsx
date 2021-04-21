@@ -17,7 +17,13 @@ import {
  Url,
  OutputText,
  OutputView,
- TotalText,
+ EmptyCart,
+ EmptyCartText,
+ EmptyCartTextSub,
+ CheckOutView,
+ CheckOutText,
+ InnerText,
+ Text1,
 } from '../constants/constantFile'
 import {Button, Text, View, FlatList, Image} from 'react-native';
 import { decrement, increment } from '../redux/actions/actions';
@@ -70,17 +76,28 @@ const Cart = () => {
     );
     }}
     />
-    
+    <CheckOutView>
+    <CheckOutText>Promo code can be applied on payment page</CheckOutText>
     <CheckOutButton accessible={true}
-     accessibilityLabel="Tap me! to check out"  ><Text style={{color:'white'}}>CheckOut {billedAmount.productReducer.billAmount}</Text></CheckOutButton>
-    
+     accessibilityLabel="Tap me! to check out" >
+       <InnerText style={{justifyContent:"space-around"}}>
+         <Text1>Proceed to checkout</Text1> 
+      <Text1>
+      {billedAmount.productReducer.billAmount}.Rs >
+      </Text1>
+      </InnerText>
+      </CheckOutButton>
+     </CheckOutView>
     </Main>
     );
 
  }
 else{
   return(
-  <Main accessible={true}><Text>Cart is empty</Text></Main>
+  <EmptyCart accessible={true}>
+    <EmptyCartText>No items in your cart</EmptyCartText>
+    <EmptyCartTextSub>Your favourite items are just a click away</EmptyCartTextSub>
+  </EmptyCart>
   );
 }
  

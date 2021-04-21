@@ -6,7 +6,23 @@ import styled from 'styled-components/native';
 export const Url = 'http://10.0.2.2:3000/categories';
 
 
+export const EmptyCart = styled.View`
+  align-items: center;
+  justify-content: center;
+  margin-top:auto;
+  margin-bottom:auto;
 
+
+
+
+`
+export const EmptyCartTextSub = styled.Text`
+font-size: 15;
+`
+export const EmptyCartText = styled.Text`
+font-size: 20;
+font-weight:bold;
+`
 export const ItemsSubscript = styled.Text`
 font-size:20px;`
 export const ImageCart = styled.Image`
@@ -14,6 +30,15 @@ width: ${imageHeight};
 height: ${imageWidth};
 margin-left:7%;
 padding-bottom:10px;
+`
+export const CheckOutView = styled.View`
+height:15%;
+background-color:white;
+bottom:0;
+width:100%;
+align-items:center;
+position:absolute;
+
 `
 export const OutputText = styled.Text`
 font-weight:bold;
@@ -61,18 +86,35 @@ export const ItemHeading =  styled.Text`
     font-size:20px;
     `;
 export const CheckOutButton = styled.TouchableOpacity`
-  flex:1;
-  width:100%;
-  height:5%;
-  position:absolute;
-  padding-top:2%;
-  bottom:0;
   align-items:center;
   background-color:#bf2957;
+  width:95%;
+  margin:auto;
+  height:45;
+  border-radius:8;
   `;
+export const InnerText = styled.View`
+margin:auto;
+width:100%;
+flex-direction:row;
+justify-content:space-around;
+flex:1;
+`;
+export const Text1 = styled.Text`
+
+font-weight:bold;
+font-size:20;
+color:white;
+margin:auto;
+`
+
+  export const CheckOutText = styled.Text`
+  font-size:15;
+  margin:auto;
+  `
   export const TotalText = styled.Text`
   font-weight:bold;
-  font-size:30px;
+  font-size:35px;
   color:red;
   `
 
