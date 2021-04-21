@@ -73,26 +73,4 @@ export const CheckOutButton = styled.Button`
   `
 
 
-  // export const data = [
-  //   {
-  //     "ProductId": "5b6c71a101a7c38429530891",
-  //     "ImageURL": "https://raw.githubusercontent.com/gautam-in/shopping-cart-assignment/master/static/images/products/beauty-hygiene/shampoo.jpg",
-  //     "ProductQuantity": 1,
-  //     "ProductName": "TRESemme Shampoo - Keratin Smooth With Argan Oil, 580 ml ",
-  //     "ProductPrice": 410
-  //   },
-  //   {
-  //     "ProductId": "5b6c71e601a7c38429530892",
-  //     "ImageURL": "https://raw.githubusercontent.com/gautam-in/shopping-cart-assignment/master/static/images/products/beauty-hygiene/dove.jpg",
-  //     "ProductQuantity": 1,
-  //     "ProductName": "Dove Intense Repair Shampoo 650ml + Bathing Bar Soap Cream Beauty 100G Pack of 3",
-  //     "ProductPrice": 622
-  //   },
-  //   {
-  //     "ProductId": "5b6c727801a7c38429530894",
-  //     "ImageURL": "https://raw.githubusercontent.com/gautam-in/shopping-cart-assignment/master/static/images/products/beauty-hygiene/closeup.jpg",
-  //     "ProductQuantity": 1,
-  //     "ProductName": "Close Up Ever Fresh Red Hot Gel Toothpaste, 150 gm",
-  //     "ProductPrice": 82
-  //   }
-  // ]
+ 

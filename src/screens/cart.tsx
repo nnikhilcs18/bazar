@@ -46,7 +46,7 @@ const Cart = () => {
  <ItemsBar>
  <ImageCart
  source={{
- uri: item.ImageURL
+ uri: item.image
  }}
  />
  <ContainerCart>
