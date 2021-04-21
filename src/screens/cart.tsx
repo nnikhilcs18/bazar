@@ -1,112 +1,77 @@
-import React, { useState, useEffect } from 'react';
-import Header from '../screens/Home/header';
+
+import React, {useState, useEffect} from 'react';
+//import RootState from '../redux/store/configureStore';
 import ButtonCart from '../components/button';
-import LeftHeader from './Home/leftheader';
-import RightHeader from './Home/rightheader'
+import {useSelector,useDispatch} from 'react-redux'
 import {
-  ItemsSubscript,
-  ImageCart,
-  ContainerCart,
-  TopBar,
-  Main,
-  TextView,
-  Increments,
-  ItemsBar,
-  ItemHeading,
-  CheckOutButton,
-  Url
+ ItemsSubscript,
+ ImageCart,
+ ContainerCart,
+ TopBar,
+ Main,
+ TextView,
+ Increments,
+ ItemsBar,
+ ItemHeading,
+ CheckOutButton,
+ Url,
+ OutputText,
+ OutputView,
+ TotalText,
 } from '../constants/constantFile'
-import {Button, Text, View, FlatList, Image,TouchableOpacity,StyleSheet} from 'react-native';
+import {Button, Text, View, FlatList, Image} from 'react-native';
+import { decrement, increment } from '../redux/actions/actions';
+ 
+const Cart = () => {
+ const cartItems = useSelector((state) => state);
+ console.log("count",cartItems.productReducer.cartItems)
+ const dispatch = useDispatch()
+ 
+ console.log("cart items: //-2.Om.-", cartItems)
+ 
+ return (
+ <Main>
+ <TextView>
+ <TopBar>
+ My Cart ({cartItems.productReducer.cartItems.length} <ItemsSubscript>items</ItemsSubscript> )
+ {/* //<TotalText>  Total {cartItems.counter.cartBill}</TotalText> */}
+ </TopBar>
+ </TextView>
+ <FlatList
+ horizontal={false}
+ keyExtractor={data => data.ID}
+ data={cartItems.productReducer.cartItems}
+ renderItem={({item}) => {
+ return (
+ <ItemsBar>
+ <ImageCart
+ source={{
+ uri: item.ImageURL
+ }}
+ />
+ <ContainerCart>
+ <ItemHeading numberOfLines={3}>{item.productName}</ItemHeading>
+ <Increments>
+  
+ <ButtonCart Press={() => dispatch(increment(item))} title="+" />
 
-const Cart = ({ navigation }) => {
-  const [quantity, setQuantity] = useState(1);
-  const incrementFunc = () => {
-    setQuantity(quantity + 1);
-  };
-  const decrementFunc = () => {
-    if (quantity === 0) {
-      setQuantity(0);
-      return;
-    }
-
-    setQuantity(quantity - 1);
-  };
-  const [data, setData] = useState([]);
-  const [loading, setLoading] = useState(false);
-  useEffect(() => {
-    const fetchCategories = async () => {
-      setLoading(true);
-      const newData = await fetch(`${Url}`); //change to a global function
-      const newDataJson = await newData.json();
-      setData(newDataJson);
-      console.log(data);
-    };
-
-    fetchCategories();
-  }, []);
-
-  return (
-    <Main styles={styles.container}>
-      <View style={styles.header}>
-        <TouchableOpacity onPress={() => navigation.navigate('Homescreen')} ><LeftHeader /></TouchableOpacity>
-        <TouchableOpacity onPress={() => navigation.navigate('Cart')}><RightHeader /></TouchableOpacity>
-      </View>
-      <View style={styles.content}>
-      <TextView>
-       
-        
-        <TopBar>
-          My Cart ({data.length} <ItemsSubscript>items</ItemsSubscript> )
-        </TopBar>
-      </TextView>
-      <FlatList
-        horizontal={false}
-        //keyExtractor={data => data.key}
-        data={data}
-        renderItem={({ item }) => {
-          console.log ('cart is working')
-          return (
-            <ItemsBar>
-              <ImageCart
-                source={{
-                  uri: item.ImageURL
-                }}
-              />
-              <ContainerCart>
-                <ItemHeading numberOfLines={2}>{item.ProductName}</ItemHeading>
-                <Increments>
-                  <ButtonCart Press={() => incrementFunc()} title="+" />
-                  <Text>{quantity}</Text>
-                  <ButtonCart Press={() => decrementFunc()} title="-" />
-                </Increments>
-              </ContainerCart>
-            </ItemsBar>
-          );
-        }}
-      />
-        <CheckOutButton onPress={() => navigation.navigate('Store')}
-          title="Checkout" color="#bf2957" />
-      </View>
-    </Main>
-  );
+ <OutputView>
+  <OutputText>{item.quantity}</OutputText>
+  <OutputText>Rs.{item.price}</OutputText>
+ </OutputView>
+ 
+ <ButtonCart Press={() => dispatch(decrement(item))} title="-" />
+ </Increments>
+ </ContainerCart>
+ </ItemsBar>
+ );
+ }}
+ />
+ 
+ <CheckOutButton title="Checkout" color="#bf2957" />
+ 
+ </Main>
+ );
 };
+ 
 export default Cart;
-const styles = StyleSheet.create({
-  container: {
-   flex:1
-  },
-  header:{
-    flex: 0.8,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    backgroundColor: 'white',
-    margin: 5
-  },
-  content: {
-    flex: 8,
-    flexDirection: 'column'
-  }
-
-})
-

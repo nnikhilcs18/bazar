@@ -4,7 +4,7 @@ import ProductTemplate from './ProductTemplate'
 import { showMessage, hideMessage } from "react-native-flash-message";
 import { Print } from '@material-ui/icons';
 import { useSelector, useDispatch } from 'react-redux'
-import { addProduct } from '../../redux/reducer/product';
+import { addProduct } from '../../redux/actions/actions';
 
 const urlProduct = 'http://10.0.2.2:4000/products'
 const urlCart = 'http://10.0.2.2:4000/addToCart'
