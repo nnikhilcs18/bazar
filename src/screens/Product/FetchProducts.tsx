@@ -12,7 +12,7 @@ const FetchProducts = (props) => {
 
   const productsSelected = useSelector(state => state.productReducer)
   const categorySelected = useSelector(state => state.categoryReducer.arrayCat)
-  // console.log("PRODUCT STATE",productsSelected)
+  console.log("------------------PRODUCT STATE------------------",productsSelected)
 
   const dispatch = useDispatch()
   const [data, setData] = useState([])
@@ -26,8 +26,8 @@ const FetchProducts = (props) => {
     const productDetails = {
       ID: id,
       image: imageURL,
-      ProductName: name,
-      Price: price,
+      productName: name,
+      price: price,
     }
     fetch(urlCart, {
       method: 'POST',
@@ -48,7 +48,7 @@ const FetchProducts = (props) => {
       })
       .catch((error) => { console.error(error); })
       .catch(() => { console.log('error'); })
-    dispatch(addProduct(id))
+    dispatch(addProduct(productDetails))
   }
 
 
@@ -57,7 +57,7 @@ const FetchProducts = (props) => {
     fetch(urlProduct).then(response => response.json())
       .then(json => {
         setData(json)
-        console.log("data is", data);
+        // console.log("data is", data);
 
 
       })

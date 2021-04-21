@@ -1,11 +1,15 @@
 export const ADD_PRODUCT = 'ADD_PRODUCT'
 
 //CREATING ACTIONS
-export function addProduct(productID) {
-    // console.log("inside dispatch function",productID)
+export function addProduct(product) {
+    console.log("inside dispatch function",product.ID)
   return {
     type: ADD_PRODUCT,
-    id: productID,
+    payload:product
+    // id: product.productID,
+    // image:product.image,
+    // productName:product.productName,
+    // price:product.price,
   }
 }
 
@@ -13,26 +17,42 @@ export function addProduct(productID) {
 
 const initialState = 
   {
-    id: [],
-    counter:0,
+    
+    cartItems:[],
+    itemCount: 0,
+    totalBill: 0,
   }
 
 function productReducer(state = initialState, action) {
   switch (action.type) {
     case ADD_PRODUCT:
     
-      let map = state.id.concat(action.id).reduce((acc, e) => acc.set(e, (acc.get(e) || 0) + 1), new Map());
-      let sum = 0;
-      map.forEach((v) => { sum += v;})
-
-      return {
-        ...state,        
-        id: state.id.concat(action.id),
-        map:map,
-        counter:sum,
+      let updatedCartItems = state.cartItems;
+      // console.log("action playlooad IDDDDD",action.payload.ID)
+      let alreadyPresentItemIndex = updatedCartItems.findIndex(
+        element => element.ID == action.payload.ID,
+      );
+      // console.log("INDEX OF ALREADY PRESENT ITEM",alreadyPresentItem)
+      if (alreadyPresentItemIndex>=0) {
         
+        // console.log("INDEX OF ALREADY PRESENT ITEM-INSIDE FUNCTION",alreadyPresentItem)
+        action.payload.quantity =
+          updatedCartItems[alreadyPresentItemIndex].quantity + 1;
+        action.payload.totalPrice =
+          action.payload.price +
+          updatedCartItems[alreadyPresentItemIndex].totalPrice;
+        updatedCartItems[alreadyPresentItemIndex] = action.payload;
+      } else {
+        action.payload.quantity = 1;
+        action.payload.totalPrice = action.payload.price;
+        updatedCartItems = [...state.cartItems, action.payload];
       }
-
+      return Object.assign({}, state, {
+        cartItems: updatedCartItems,
+        itemCount: state.itemCount + 1,
+        totalBill: state.totalBill + action.payload.price,
+      });
+    
     default:
       return state
   }

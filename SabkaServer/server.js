@@ -34,19 +34,19 @@ router.get("/addToCart", function (req, res) {
 router.post("/addToCart", function (req, res) {
 
   let itemIndex = addToCartArray.findIndex(
-    element => element.ProductId === req.body.ID,
+    element => element.productId === req.body.ID,
   );
   if(itemIndex>=0){
-    addToCartArray[itemIndex].ProductQuantity=addToCartArray[itemIndex].ProductQuantity+1
+    addToCartArray[itemIndex].productQuantity=addToCartArray[itemIndex].productQuantity+1
   }
   else{
     addToCartArray.push({
 
-      ProductId: req.body.ID,
-      ImageURL: req.body.image,
-      ProductQuantity: 1,
-      ProductName: req.body.ProductName,
-      ProductPrice: req.body.Price,
+      productId: req.body.ID,
+      imageURL: req.body.image,
+      productQuantity: 1,
+      productName: req.body.productName,
+      productPrice: req.body.price,
   
     });
   }

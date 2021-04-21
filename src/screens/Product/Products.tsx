@@ -3,22 +3,11 @@ import { StyleSheet, Text, View, ScrollView, TouchableOpacity } from 'react-nati
 import Picker from '../../components/picker';
 import Header from '../Home/header';
 // import fonts from '../constants/fonts'
+import styles from './ProductStyles'
 import FetchProducts from './FetchProducts'
 
 const urlProduct = 'http://10.0.2.2:4000/products'
 export default function Products({ navigation }) {
-  // const [data, setData] = useState([])
-  // const { itemId } = (route.params)? route.params : data;
-  // useEffect(() => {
-
-  //   fetch(urlProduct).then(response => response.json())
-  //     .then(json => {
-  //       setData(json)
-  //     })
-  //     .catch((error) => { console.error(error); })
-
-  // }, [])
-  // console.log("category selected",JSON.stringify(itemId));
   return (
     <View style={styles.main}>
       <ScrollView >
@@ -28,20 +17,9 @@ export default function Products({ navigation }) {
         <Picker />
         <FetchProducts />
       </ScrollView>
-      
-
-
-
-
     </View>
   );
 }
 
-const styles = StyleSheet.create({
-  main: {
-    flex: 1,
-    justifyContent: 'flex-start',
-  },
 
-});
 

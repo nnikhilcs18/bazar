@@ -37,7 +37,15 @@ const styles= StyleSheet.create({
     content:{
        width:200,
        marginBottom:10,
-       height:100
+       height:110,
+       backgroundColor:'lightgrey',
+       padding:5
+      
+       
+    },
+    description:{
+        flexWrap:'wrap',
+        
     }
 
 })
