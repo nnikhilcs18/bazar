@@ -11,8 +11,10 @@ const bars = <Icon name={'menu'} color={'black'} size={30} />;
 const cart = <Icon name={'shopping-cart'} color={'red'} size={30} />;
 
 const appHeader = () => {
-    const count=useSelector(state => state.productReducer.counter)
-  
+    const count=useSelector(state => state.productReducer.itemCount)
+    console.log('====================================');
+    console.log(count);
+    console.log('====================================');
     return (
         
         
@@ -31,7 +33,7 @@ const appHeader = () => {
             <View style={styles.rightContainer}>
                 {cart}
               
-                    <Text>{count} items</Text>
+                    <Text>{count} 0 items</Text>
                
             </View>
         </View>
