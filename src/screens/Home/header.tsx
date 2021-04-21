@@ -31,7 +31,7 @@ const appHeader = () => {
             <View style={styles.rightContainer}>
                 {cart}
               
-                    <Text>{count} 0 items</Text>
+                    <Text>{count} items</Text>
                
             </View>
         </View>
