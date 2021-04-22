@@ -68,9 +68,9 @@ export const TextView = styled.View`
 `;
 export const Increments = styled.View`
   flex: 1;
-  flexdirection: row;
+  flex-direction: row;
   width: 100%;
-  justifycontent: flex-start;
+  justify-content: flex-start;
   padding-bottom: 5%;
   padding-top: 5%;
   padding-left: 10%;
@@ -81,7 +81,7 @@ export const ItemsBar = styled.View`
   flex-direction: row;
 `;
 export const ItemHeading = styled.Text`
-  fontweight: bold;
+  font-weight: bold;
   flex: 1;
   font-size: 20px;
 `;
