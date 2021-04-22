@@ -13,22 +13,24 @@ const initialState =
 function productReducer(state = initialState, action) {
   switch (action.type) {
     case ADD_PRODUCT:
-    
+     
       let updatedCartItems = state.cartItems;
+   
       //console.log("action playlooad IDDDDD",action.payload)
       let existingItemIndex = updatedCartItems.findIndex(
         element => element.ID == action.payload.ID,
       );
-      // console.log("INDEX OF ALREADY PRESENT ITEM",alreadyPresentItem)
+      //console.log("INDEX OF ALREADY PRESENT ITEM",existingItemIndex)
       if (existingItemIndex>=0) {
         
-        // console.log("INDEX OF ALREADY PRESENT ITEM-INSIDE FUNCTION",alreadyPresentItem)
+        // console.log("INDEX OF ALREADY PRESENT ITEM-INSIDE FUNCTION",existingItemIndex)
         action.payload.productQuantity =
           updatedCartItems[existingItemIndex].productQuantity + 1;
         action.payload.totalPrice =
           action.payload.price +
           updatedCartItems[existingItemIndex].totalPrice;
         updatedCartItems[existingItemIndex] = action.payload;
+        
       } else {
         action.payload.productQuantity = 1;
         action.payload.totalPrice = action.payload.price;
@@ -44,6 +46,7 @@ function productReducer(state = initialState, action) {
       
       case INCREMENT:
     let dummyCartItems = state.cartItems;
+    console.log(dummyCartItems);
       dummyCartItems.map((item) => {
         if (action.payload.ID === item.ID) {
           item.productQuantity++;

@@ -60,7 +60,7 @@ const Cart = () => {
     </View>
    
     <OutputView accessible={true}>
-     <OutputText>{item.quantity}</OutputText>
+     <OutputText>{item.productQuantity}</OutputText>
     </OutputView>
     
     <View style={{width:'15%'}}>
