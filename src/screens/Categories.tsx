@@ -47,11 +47,11 @@ export const Categories = ({ navigation }) => {
                 <TouchableOpacity onPress={() => navigation.navigate('Cart')}><RightHeader /></TouchableOpacity>
             </View>
             <View style={styles.category}>
-                <List.Section title="Categories">
+                <List.Section title="Categories" accessibilityLabel="Categories">
                     <ScrollView>
                         {data.map((obj) => <List.Accordion
                             title={obj.name} left={() => <List.Icon icon={obj.icon} />}>
-                            <List.Item title={obj.name} id={obj.id} onPress={() => { onPressFunction(obj.id) }} />
+                            <List.Item title={obj.name} id={obj.id} accessibilityLabel={`Click to select ${obj.name}`} onPress={() => { onPressFunction(obj.id) }} />
                         </List.Accordion>)}
                     </ScrollView>
                 </List.Section>
