@@ -1,7 +1,5 @@
 
 import React, {useState, useEffect} from 'react';
-//import RootState from '../redux/store/configureStore';
-//import ButtonCart from '../components/button';
 import {useSelector,useDispatch} from 'react-redux'
 import {
  ItemsSubscript,
@@ -40,7 +38,6 @@ const Cart = () => {
     <TextView accessible={true}>
     <TopBar>
     My Cart  <ItemsSubscript>({cartItems.productReducer.cartItems.length} items)</ItemsSubscript> 
-    {/* //<TotalText>  Total {cartItems.counter.cartBill}</TotalText> */}
     </TopBar>
     </TextView>
     <FlatList
