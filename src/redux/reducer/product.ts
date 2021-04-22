@@ -16,14 +16,14 @@ function productReducer(state = initialState, action) {
      
       let updatedCartItems = state.cartItems;
    
-      //console.log("action playlooad IDDDDD",action.payload)
+     
       let existingItemIndex = updatedCartItems.findIndex(
         element => element.ID == action.payload.ID,
       );
-      //console.log("INDEX OF ALREADY PRESENT ITEM",existingItemIndex)
+      
       if (existingItemIndex>=0) {
         
-        // console.log("INDEX OF ALREADY PRESENT ITEM-INSIDE FUNCTION",existingItemIndex)
+        
         action.payload.productQuantity =
           updatedCartItems[existingItemIndex].productQuantity + 1;
         action.payload.totalPrice =
@@ -71,15 +71,14 @@ function productReducer(state = initialState, action) {
           if (action.payload.ID === item.ID) {
             item.productQuantity--;
             
-            //item.totalPrice -= item.price;
+            
           }
         });
       }
       return {
           ...state,
         cartItems: [...dummyCartItems],
-        //totalBill: state.totalBill - action.payload.price,
-        //cartBill: state.cartBill - action.payload.ProductPrice,
+       
         billAmount:state.billAmount-action.payload.price,
         Counter: state.Counter - 1,
       };
