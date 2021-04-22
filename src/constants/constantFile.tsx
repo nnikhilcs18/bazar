@@ -1,7 +1,7 @@
 import {Dimensions} from 'react-native';
 const dimensions = Dimensions.get('window');
-const imageHeight = Math.round(dimensions.width * 0.25);
-const imageWidth = imageHeight;
+export const imageHeight = Math.round(dimensions.width * 0.25);
+export const imageWidth = imageHeight;
 import styled from 'styled-components/native';
 export const Url = 'http://10.0.2.2:3000/categories';
 

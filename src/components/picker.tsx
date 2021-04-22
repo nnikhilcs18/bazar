@@ -3,7 +3,9 @@ import { Image, View, Text, StyleSheet, Button } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectedCategory } from '../redux/reducer/category';
-// import colors from '../constants/colors';
+import { categoryURL, productURL } from '../constants/url';
+import styles from './pickerStyles'
+import {colors} from '../constants/colors';
 
 const picker = (props) => {
 
@@ -17,14 +19,14 @@ const picker = (props) => {
 
     useEffect(() => {
 
-        fetch(`http://10.0.2.2:4000/categories`).then(response => response.json())
+        fetch(categoryURL).then(response => response.json())
 
             .then(json => {
                 setData(json)
                 console.log(json)
             })
             .catch((error) => { console.error(error); })
-        fetch(`http://10.0.2.2:4000/products`).then(response => response.json())
+        fetch(productURL).then(response => response.json())
 
             .then(json => {
                 setProd(json)
@@ -61,27 +63,6 @@ const picker = (props) => {
     )
 }
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'flex-start',
 
-    },
-    pick: {
-        backgroundColor: "#bf2957",
-        paddingLeft: 25,
-        height: 55,
-
-
-    },
-    picker: {
-        height: 45,
-        width: 380,
-        padding: 20,
-        color: "white",
-        fontSize: 85,
-    }
-});
 
 export default picker

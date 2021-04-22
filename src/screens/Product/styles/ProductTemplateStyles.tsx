@@ -1,4 +1,5 @@
 import { StyleSheet } from "react-native";
+import {imageWidth,imageHeight} from '../../../constants/colors'
 const styles= StyleSheet.create({
     productContainer:{       
         flex: 1,   
@@ -7,8 +8,9 @@ const styles= StyleSheet.create({
         justifyContent: 'flex-start',
         borderStyle:'dotted',
         borderBottomWidth:1,
-        padding:10,
-        marginBottom:10,
+        padding:'3%',
+        paddingBottom:'5%',
+        marginBottom:'3%',
        
     },
     productItem:{
@@ -19,27 +21,27 @@ const styles= StyleSheet.create({
        
     },
     image:{
-        height:170,
-        width:170, 
+        height:imageHeight,
+        width:imageWidth, 
         
     },
     contentContainer:{
-        marginLeft:15,
-        marginRight:15,
+        marginLeft:'4.5%',
+        marginRight:'4.5%',
         justifyContent:'space-between',
        
     },
     label:{
         fontSize:20,
         fontWeight:'bold',
-        marginBottom:10,
+        marginBottom:'3%',
     },
     content:{
-       width:200,
-       marginBottom:10,
-       height:110,
+       width:'80%',
+       marginBottom:'3%',
+       height:'70%',
        backgroundColor:'lightgrey',
-       padding:5
+       padding:'1.5%'
       
        
     },

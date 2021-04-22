@@ -41,6 +41,8 @@ function productReducer(state = initialState, action) {
         billAmount: state.billAmount + action.payload.price,
 
       };
+
+      
       case INCREMENT:
     let dummyCartItems = state.cartItems;
       dummyCartItems.map((item) => {
