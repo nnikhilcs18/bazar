@@ -32,10 +32,7 @@ import { decrement, increment } from '../redux/actions/actions';
 const Cart = () => {
  const cartItems = useSelector((state) => state);
  const billedAmount = useSelector((state)=> state);
- console.log("count",cartItems.productReducer.cartItems)
  const dispatch = useDispatch()
- 
- console.log("cart items: //-2.Om.-", cartItems)
  if(cartItems.productReducer.cartItems.length)
  {
   return (
