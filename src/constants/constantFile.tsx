@@ -37,8 +37,6 @@ background-color:white;
 bottom:0;
 width:100%;
 align-items:center;
-position:absolute;
-
 `
 export const OutputText = styled.Text`
 font-weight:bold;
