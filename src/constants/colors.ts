@@ -2,7 +2,7 @@ export const colors = {
   btnBase: "#bf2957",
   white:'white',
   primary: "#bf2957",
-  
+  contentBackground:'#f6f6f6',
 };
 
 import {Dimensions} from 'react-native';

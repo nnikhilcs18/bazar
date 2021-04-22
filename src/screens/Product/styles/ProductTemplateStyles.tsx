@@ -1,5 +1,5 @@
 import { StyleSheet } from "react-native";
-import {imageWidth,imageHeight} from '../../../constants/colors'
+import {imageWidth,imageHeight,colors} from '../../../constants/colors'
 const styles= StyleSheet.create({
     productContainer:{       
         flex: 1,   
@@ -11,6 +11,7 @@ const styles= StyleSheet.create({
         padding:'3%',
         paddingBottom:'5%',
         marginBottom:'3%',
+        backgroundColor:colors.white
        
     },
     productItem:{
@@ -40,8 +41,8 @@ const styles= StyleSheet.create({
        width:'80%',
        marginBottom:'3%',
        height:'70%',
-       backgroundColor:'lightgrey',
-       padding:'1.5%'
+       backgroundColor:colors.contentBackground,
+       padding:'4%'
       
        
     },

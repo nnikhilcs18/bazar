@@ -4,7 +4,7 @@ import {colors} from '../constants/colors'
 const styles=StyleSheet.create({
     btn:{
         backgroundColor:colors.primary,
-        height:'30%',        
+        height:45,        
         padding:'3%',
         width:'80%'
 

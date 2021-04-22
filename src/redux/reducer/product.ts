@@ -6,7 +6,7 @@ const initialState =
   {
     
     cartItems:[],
-    itemCount: 0,
+    Counter: 0,
     billAmount: 0,
   }
 
@@ -16,30 +16,29 @@ function productReducer(state = initialState, action) {
     
       let updatedCartItems = state.cartItems;
       //console.log("action playlooad IDDDDD",action.payload)
-      let alreadyPresentItemIndex = updatedCartItems.findIndex(
+      let existingItemIndex = updatedCartItems.findIndex(
         element => element.ID == action.payload.ID,
       );
       // console.log("INDEX OF ALREADY PRESENT ITEM",alreadyPresentItem)
-      if (alreadyPresentItemIndex>=0) {
+      if (existingItemIndex>=0) {
         
         // console.log("INDEX OF ALREADY PRESENT ITEM-INSIDE FUNCTION",alreadyPresentItem)
-        action.payload.quantity =
-          updatedCartItems[alreadyPresentItemIndex].quantity + 1;
+        action.payload.productQuantity =
+          updatedCartItems[existingItemIndex].productQuantity + 1;
         action.payload.totalPrice =
           action.payload.price +
-          updatedCartItems[alreadyPresentItemIndex].totalPrice;
-        updatedCartItems[alreadyPresentItemIndex] = action.payload;
+          updatedCartItems[existingItemIndex].totalPrice;
+        updatedCartItems[existingItemIndex] = action.payload;
       } else {
-        action.payload.quantity = 1;
+        action.payload.productQuantity = 1;
         action.payload.totalPrice = action.payload.price;
         updatedCartItems = [...state.cartItems, action.payload];
       }
       return {
         ...state,
         cartItems: updatedCartItems,
-        itemCount: state.itemCount + 1,
+        Counter: state.Counter + 1,
         billAmount: state.billAmount + action.payload.price,
-
       };
 
       
@@ -47,27 +46,27 @@ function productReducer(state = initialState, action) {
     let dummyCartItems = state.cartItems;
       dummyCartItems.map((item) => {
         if (action.payload.ID === item.ID) {
-          item.quantity++;
+          item.productQuantity++;
         }
       });
       return  {
           ...state,
         cartItems: [...dummyCartItems],
         billAmount:state.billAmount+action.payload.price,
-        itemCount: state.itemCount + 1,
+        Counter: state.Counter + 1,
        
       };
  
  case DECREMENT:
     dummyCartItems = state.cartItems;
-    if (action.payload.quantity === 1) {
+    if (action.payload.productQuantity === 1) {
         dummyCartItems = state.cartItems.filter(
           (item) => item.ID !== action.payload.ID,
         );
       } else {
         dummyCartItems.map((item) => {
           if (action.payload.ID === item.ID) {
-            item.quantity--;
+            item.productQuantity--;
             
             //item.totalPrice -= item.price;
           }
@@ -79,7 +78,7 @@ function productReducer(state = initialState, action) {
         //totalBill: state.totalBill - action.payload.price,
         //cartBill: state.cartBill - action.payload.ProductPrice,
         billAmount:state.billAmount-action.payload.price,
-        itemCount: state.itemCount - 1,
+        Counter: state.Counter - 1,
       };
       
     
