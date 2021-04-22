@@ -15,6 +15,7 @@ import FlashMessage from "react-native-flash-message";
 //implementing saga
 import store from "./src/redux/store"
 import { Provider } from 'react-redux';
+import OfflineNotice from './src/components/OfflineNotice';
 
 const Stack = createStackNavigator();
 // const Drawer = createDrawerNavigator();
@@ -23,13 +24,15 @@ function AppNav() {
   console.disableYellowBox = true;
   setTimeout(function(){ SplashScreen.hide()}, 15);
   return (
-    
+    <>
+    <OfflineNotice />
     <Provider store={store}>
     <NavigationContainer>
       <Tabs />
     </NavigationContainer>
     <FlashMessage position="top" />
     </Provider>
+    </>
       
   );
 }
