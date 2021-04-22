@@ -1,6 +1,6 @@
 import {Dimensions} from 'react-native';
 const dimensions = Dimensions.get('window');
-export const imageHeight = Math.round(dimensions.width * 0.25);
+export const imageHeight = Math.round(dimensions.width * 0.23);
 export const imageWidth = imageHeight;
 import styled from 'styled-components/native';
 export const Url = 'http://10.0.2.2:3000/categories';
@@ -11,10 +11,10 @@ export const EmptyCart = styled.View`
   justify-content: center;
   margin-top:auto;
   margin-bottom:auto;
+`
+export const ButtonCart = styled.Button`
 
-
-
-
+border-radius:50;
 `
 export const EmptyCartTextSub = styled.Text`
 font-size: 15;
@@ -37,15 +37,14 @@ background-color:white;
 bottom:0;
 width:100%;
 align-items:center;
-position:absolute;
-
 `
 export const OutputText = styled.Text`
 font-weight:bold;
 font-size:18px`
 export const ContainerCart = styled.View`
 width:60%;
-margin-left:5%;`
+margin-left:5%;
+`
 
 export const TopBar = styled.Text`
 font-weight: bold;
@@ -70,6 +69,7 @@ export const TextView = styled.View`
 export const Increments = styled.View`
 flex:1;
 flexDirection: row;
+width:100%;
 justifyContent: flex-start;
 padding-bottom:5%;
 padding-top:5%;

@@ -1,7 +1,7 @@
 
 import React, {useState, useEffect} from 'react';
 //import RootState from '../redux/store/configureStore';
-import ButtonCart from '../components/button';
+//import ButtonCart from '../components/button';
 import {useSelector,useDispatch} from 'react-redux'
 import {
  ItemsSubscript,
@@ -24,6 +24,7 @@ import {
  CheckOutText,
  InnerText,
  Text1,
+ ButtonCart,
 } from '../constants/constantFile'
 import {Button, Text, View, FlatList, Image} from 'react-native';
 import { decrement, increment } from '../redux/actions/actions';
@@ -41,7 +42,7 @@ const Cart = () => {
     <Main accessible={true}>
     <TextView accessible={true}>
     <TopBar>
-    My Cart ({cartItems.productReducer.cartItems.length} <ItemsSubscript>items</ItemsSubscript> )
+    My Cart  <ItemsSubscript>({cartItems.productReducer.cartItems.length} items)</ItemsSubscript> 
     {/* //<TotalText>  Total {cartItems.counter.cartBill}</TotalText> */}
     </TopBar>
     </TextView>
@@ -60,17 +61,20 @@ const Cart = () => {
     <ContainerCart accessible={true}>
     <ItemHeading numberOfLines={3}>{item.productName}</ItemHeading>
     <Increments accessible={true}>
-     
-    <ButtonCart Press={() => dispatch(decrement(item))} title="-" />
+     <View style={{width:'15%'}}>
+    <ButtonCart  accessible={true} accessibilityLabel="Press to decrement!" color="#bf2957" onPress={() => dispatch(decrement(item))} title="-" />
+    </View>
    
     <OutputView accessible={true}>
      <OutputText>{item.quantity}</OutputText>
-     <OutputText>Rs.{item.price}</OutputText>
     </OutputView>
     
-   
-    <ButtonCart Press={() => dispatch(increment(item))} title="+" />
+    <View style={{width:'15%'}}>
+    <ButtonCart   accessible={true} accessibilityLabel="Press to increment" color="#bf2957" onPress={() => dispatch(increment(item))} title="+" />
+    </View>
+    <OutputText> X Rs.{item.price}</OutputText>
     </Increments>
+    
     </ContainerCart>
     </ItemsBar>
     );
@@ -83,7 +87,7 @@ const Cart = () => {
        <InnerText style={{justifyContent:"space-around"}}>
          <Text1>Proceed to checkout</Text1> 
       <Text1>
-      {billedAmount.productReducer.billAmount}.Rs >
+      {billedAmount.productReducer.billAmount}.Rs 
       </Text1>
       </InnerText>
       </CheckOutButton>
