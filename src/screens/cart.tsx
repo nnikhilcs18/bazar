@@ -27,7 +27,7 @@ import {
 import {Button, Text, View, FlatList, Image} from 'react-native';
 import { decrement, increment } from '../redux/actions/actions';
  
-const Cart = () => {
+const Cart = ({navigation}) => {
  const cartItems = useSelector((state) => state);
  const billedAmount = useSelector((state)=> state);
  const dispatch = useDispatch()
@@ -76,7 +76,7 @@ const Cart = () => {
     />
     <CheckOutView>
     <CheckOutText>Promo code can be applied on payment page</CheckOutText>
-    <CheckOutButton accessible={true}
+    <CheckOutButton accessible={true} onPress={() => navigation.navigate('Store')}
      accessibilityLabel="Tap me! to check out" >
        <InnerText style={{justifyContent:"space-around"}}>
          <Text1>Proceed to checkout</Text1> 
