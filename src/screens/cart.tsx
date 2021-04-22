@@ -24,26 +24,13 @@ import {
   ButtonCart,
 } from '../constants/constantFile';
 import {Button, Text, View, FlatList, Image} from 'react-native';
-import { decrement, increment } from '../redux/actions/actions';
- 
+import {decrement, increment} from '../redux/actions/actions';
+
 const Cart = ({navigation}) => {
- const cartItems = useSelector((state) => state);
- const billedAmount = useSelector((state)=> state);
- const dispatch = useDispatch()
- if(cartItems.productReducer.cartItems.length)
- {
-  return (
-    <Main accessible={true}>
-    <TextView accessible={true}>
-    <TopBar>
-    My Cart  <ItemsSubscript>({cartItems.productReducer.cartItems.length} items)</ItemsSubscript> 
-    </TopBar>
-    </TextView>
-    <FlatList
-    horizontal={false}
-    keyExtractor={data => data.ID}
-    data={cartItems.productReducer.cartItems}
-    renderItem={({item}) => {
+  const cartItems = useSelector(state => state);
+  const billedAmount = useSelector(state => state);
+  const dispatch = useDispatch();
+  if (cartItems.productReducer.cartItems.length) {
     return (
       <Main accessible={true}>
         <TextView accessible={true}>
@@ -103,7 +90,7 @@ const Cart = ({navigation}) => {
         />
         <CheckOutView>
           <CheckOutText>Promo code can be applied on payment page</CheckOutText>
-          <CheckOutButton
+          <CheckOutButton onPress={() => navigation.navigate('Store')} 
             accessible={true}
             accessibilityLabel="Tap me! to check out">
             <InnerText style={{justifyContent: 'space-around'}}>
@@ -114,21 +101,14 @@ const Cart = ({navigation}) => {
         </CheckOutView>
       </Main>
     );
-    }}
-    />
-    <CheckOutView>
-    <CheckOutText>Promo code can be applied on payment page</CheckOutText>
-    <CheckOutButton accessible={true} onPress={() => navigation.navigate('Store')}
-     accessibilityLabel="Tap me! to check out" >
-       <InnerText style={{justifyContent:"space-around"}}>
-         <Text1>Proceed to checkout</Text1> 
-      <Text1>
-      {billedAmount.productReducer.billAmount}.Rs 
-      </Text1>
-      </InnerText>
-      </CheckOutButton>
-     </CheckOutView>
-    </Main>
+  } else {
+    return (
+      <EmptyCart accessible={true}>
+        <EmptyCartText>No items in your cart</EmptyCartText>
+        <EmptyCartTextSub>
+          Your favourite items are just a click away
+        </EmptyCartTextSub>
+      </EmptyCart>
     );
   }
 };
