@@ -22,7 +22,6 @@ export const Categories = ({ navigation }) => {
 
             .then(json => {
                 setData(json)
-                // console.log(json)
             })
             .catch((error) => { console.error(error); })
         fetch(`http://10.0.2.2:4000/products`).then(response => response.json())
@@ -53,7 +52,6 @@ export const Categories = ({ navigation }) => {
                         {data.map((obj) => <List.Accordion
                             title={obj.name} left={() => <List.Icon icon={obj.icon} />}>
                             <List.Item title={obj.name} id={obj.id} onPress={() => { onPressFunction(obj.id) }} />
-                            {/* {onPressFunction(obj.id)} */}
                         </List.Accordion>)}
                     </ScrollView>
                 </List.Section>
