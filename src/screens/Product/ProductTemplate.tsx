@@ -14,7 +14,7 @@ const productTemplate =(props)=>{
             <View style={styles.productItem} accessible={true}>
                 <Image style={styles.image} source={props.imageSource} />
                 <View style={styles.contentContainer} accessible={true}>
-                    <View style={styles.content}><Text  accessibilityLiveRegion="polite" style={styles.description} accessible={true} >{props.content}</Text></View>
+                    <View style={styles.content}><Text numberOfLines={5} accessibilityLiveRegion="polite" style={styles.description} accessible={true} >{props.content}</Text></View>
                     <Buttons title={props.btitle} Press={props.bPress}/>
                 </View>
             </ View>                

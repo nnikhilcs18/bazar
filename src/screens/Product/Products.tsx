@@ -7,10 +7,10 @@ import styles from './styles/ProductStyles'
 import FetchProducts from './FetchProducts'
 import LeftHeader from '../Home/leftheader';
 import RightHeader from '../Home/rightheader';
-
+import {defaultValue} from '../../constants/consoleStatements'
 export default function Products({ navigation, route }) {
-  const sample = "5b68994e3d1a866534f516df";
-  const catName = (route.params) ? route.params.catName : sample;
+  
+  const catName = (route.params) ? route.params.catName : defaultValue;
   return (
     <View style={styles.main}>
       <ScrollView >
