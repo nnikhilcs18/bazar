@@ -23,7 +23,7 @@ const picker = (props) => {
 
             .then(json => {
                 setData(json)
-                console.log(json)
+                // console.log(json)
             })
             .catch((error) => { console.error(error); })
         fetch(productURL).then(response => response.json())
@@ -42,14 +42,13 @@ const picker = (props) => {
                     style={styles.picker}
                     selectedValue={props.name}
                     onValueChange={(value) => {
-                        arrayCat = (dataProd.filter(item => item.category == value));
-                        // console.log(arrayCat);
+                       arrayCat=(value==="01234")?dataProd:(dataProd.filter(item => item.category == value))                     
                         dispatch(selectedCategory(arrayCat));
                     }}
-                // {(itemValue, itemIndex) =>
-                //      setSelectedLanguage(itemValue)
-                // }
+   
+             
                 >
+                    <Picker.Item value="01234" label="All Products" />
                     <Picker.Item value="5b6899953d1a866534f516e2" label="Fruits & Vegetables" />
                     <Picker.Item value="5b6899123d1a866534f516de" label="Bakery, Cakes and Dairy" />
                     <Picker.Item value="5b675e5e5936635728f9fc30" label="Beverages" />
